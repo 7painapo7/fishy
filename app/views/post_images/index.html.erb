@@ -1,0 +1,19 @@
+<%= form_for(@post_image) do |f| %>
+image
+<%= f.label :fish_image %>
+<%= f.file_field :fish_image %>
+
+name
+<%= f.text_field :fish_name, autofocus: true, placeholder:"魚種"%>
+introduction
+<%= f.text_field :count, autofocus: true %>
+<%= f.text_field :size, autofocus: true %>
+<%= f.submit "投稿する" %>
+<% end %>
+
+
+<% @photos.each do |photos| %>
+<%= image_tag photos.fish_image.to_s %>
+<!-- <%= photos.fish_image %> -->
+<%= photos.fish_name %>
+<% end %>
