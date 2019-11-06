@@ -28,6 +28,10 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+	@user = User.find(params[:id])
+	@user.destroy
+	flash[:notice] = "You have destroyed user successfully."
+	redirect_to new_user_session_path
 	end
 
 	private

@@ -1,3 +1,6 @@
+管理者画面
+
+
 <!-- 検索窓 -->
   <div class="search_container">
 	<%= search_form_for @q do |f| %>
@@ -13,5 +16,5 @@
 <%= image_tag user.image.to_s %>
 <%= user.name %>
 <%= user.introduction %>
-<%= link_to "詳細", user_path(user.id) %>
+<%= link_to "詳細", admin_path(user.id) %>
 <% end %>
