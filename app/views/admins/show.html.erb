@@ -14,7 +14,7 @@
 <%= @user.name %>
 <%= @user.introduction %>
 <!-- <%= link_to "Edit", edit_user_path(@user) %> -->
-<%= link_to "Destroy", user_path(@user.id), method: :delete,data: { confirm: '本当に消しますか？' } %>
+<%= link_to "Destroy", user_delete_path(@user.id), method: :delete,data: { confirm: '本当に消しますか？' } %>
 
 
 <h2>gmap</h2>
