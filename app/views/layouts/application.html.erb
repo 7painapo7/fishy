@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Fishy</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Pf</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+
+
+<body>
+  <header>
+    <div class="container">
+      <div id="slidemenu">
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if admin_signed_in? %>
+
+          <li class="">
+            <!-- あとで変える -->
+            <%= link_to "ユーザ一覧", users_path %>
+          </li>
+
+          <li class="">
+            <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
+          </li>
+
+          <% elsif user_signed_in? %>
+
+          <li class="">
+            <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
+          </li>
+
+          <li class="">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+          </li>
+
+          <% else %>
+
+          <li class="">
+            <%= link_to "New user",  new_user_registration_path %>
+          </li>
+
+          <li class="">
+            <%= link_to "Log in", new_user_session_path %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <!-- /header -->
+  <%= yield %>
+</body>
 </html>
