@@ -1,0 +1,16 @@
+<!-- 検索窓 -->
+  <div class="search_container">
+	<%= search_form_for @q do |f| %>
+
+    <%= f.text_field :name_cont, placeholder: 'ユーザー名を入力...', class: "search-box" %>
+    <i class="fa fa-search glyphicon glyphicon-search search-icon"><%= f.submit ("検索する"), id: "search-submit" %></i>
+  <% end %>
+  </div>
+
+
+
+<% @users.each do |user| %>
+<%= user.name %>
+<%= user.introduction %>
+<%= link_to "詳細", user_path(user.id) %>
+<% end %>

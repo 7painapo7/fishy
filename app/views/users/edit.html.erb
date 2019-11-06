@@ -1,0 +1,11 @@
+<%= form_for(@user) do |f| %>
+image
+<%= f.label :image %>
+<%= f.file_field :image %>
+
+name
+<%= f.text_field :name, autofocus: true, placeholder:"名前"%>
+introduction
+<%= f.text_field :introduction, autofocus: true %>
+<%= f.submit "Update User" %>
+<% end %>
