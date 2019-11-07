@@ -2,6 +2,11 @@ class PostImagesController < ApplicationController
     def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
+
+    @post_image.latitude = EXIFR::JPEG::new(@post_image.fish_image.file.file).gps.latitude
+    @post_image.longitude = EXIFR::JPEG::new(@post_image.fish_image.file.file).gps.longitude
+    # binding.pry
+
     @post_image.save
     redirect_to post_images_path
     end
