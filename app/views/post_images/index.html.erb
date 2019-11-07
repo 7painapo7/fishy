@@ -1,3 +1,9 @@
+<div class="container">
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+</div>
+
 <%= form_for(@post_image) do |f| %>
 image
 <%= f.label :fish_image %>
@@ -16,4 +22,5 @@ introduction
 <%= image_tag photos.fish_image.to_s %>
 <!-- <%= photos.fish_image %> -->
 <%= photos.fish_name %>
+<%= link_to "Destroy", post_image_path(photos.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか？' } %>
 <% end %>

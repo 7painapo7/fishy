@@ -8,6 +8,7 @@ class AdminsController < ApplicationController
 
 	def show
 	@user = User.find(params[:id])
+	@post_image = @user.post_images
 	end
 
 	def destroy
@@ -16,5 +17,4 @@ class AdminsController < ApplicationController
 	flash[:notice] = "You have destroyed user successfully."
 	redirect_to new_user_session_path
 	end
-	
 end
