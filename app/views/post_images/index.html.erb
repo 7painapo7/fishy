@@ -56,15 +56,29 @@ geocoderを用意
 let map
 let geocoder
 
+<% @photos.each do |photos| %>
+var marker;
+var center = {
+  lat: <%= photos.latitude %>, // 緯度
+  lng: <%= photos.longitude %> // 経度
+};
+<% end %>
+
 function initMap(){
   // geocoderを初期化
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 34.666871 , lng: 135.498838},
+  center: center, // 地図の中心を指定
   zoom: 18
   });
+  marker = new google.maps.Marker({ // マーカーの追加
+        position: center, // マーカーを立てる位置を指定
+      map: map // マーカーを立てる地図を指定
+   });
+
 }
+
 
 
 function codeAddress(){
