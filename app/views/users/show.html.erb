@@ -39,36 +39,15 @@ geocoderを用意
 let map
 let geocoder
 
-// function initMap(){
-//   // geocoderを初期化
-//   geocoder = new google.maps.Geocoder()
+function initMap(){
+  // geocoderを初期化
+  geocoder = new google.maps.Geocoder()
 
-//   map = new google.maps.Map(document.getElementById('map'), {
-//   center: {lat: 34.666871 , lng: 135.498838},
-//   zoom: 18
-//   });
-// }
-
-
-
-
-
-
-
- function initMap() {
-
-        var test ={lat: <%= EXIFR::JPEG.new(@feed.image.file.file).gps.latitude %>, lng: <%= EXIFR::JPEG.new(@feed.image.file.file).gps.longitude %>};
-        <% binding.pry %>
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: test
-        });
-    }
-
-
-
-
-
+  map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 34.666871 , lng: 135.498838},
+  zoom: 18
+  });
+}
 
 
 function codeAddress(){

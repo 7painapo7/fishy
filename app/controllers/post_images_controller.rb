@@ -12,7 +12,7 @@ class PostImagesController < ApplicationController
     end
 
     def index
-    @post_image = PostImage.new
+    @p = PostImage.new
     @photos = PostImage.all
 	end
 
