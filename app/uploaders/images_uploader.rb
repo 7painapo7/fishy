@@ -5,7 +5,7 @@ class ImagesUploader < CarrierWave::Uploader::Base
   # 今回は画像の変換にMiniMagickを使うのでコメントを外しておく
   include CarrierWave::MiniMagick
   #下に書いたら動かんかった
-  process resize_to_fill: [100, 100, "Center"]
+  process resize_to_fill: [300, 300, "Center"]
 
   # Choose what kind of storage to use for this uploader:
   storage :file

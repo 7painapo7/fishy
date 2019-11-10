@@ -11,3 +11,10 @@
 <%= @user.name %>
 <%= @user.introduction %>
 <%= link_to "Edit", edit_user_path(@user) %>
+
+<% if @user.group_id == nil %>
+<%= form_for @group, url: groups_path, method: :post do |g| %>
+<%= g.text_field :group_name %>
+<%= g.submit 'グループ作成' %>
+<% end %>
+<% end %>

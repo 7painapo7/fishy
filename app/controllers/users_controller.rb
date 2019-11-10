@@ -1,10 +1,16 @@
 class UsersController < ApplicationController
 	def index
+	#groupを作成する
+	@group = Group.new
 	# @users = User.all
     # ransackの記載
 	@q = User.ransack(params[:q])
     @users = @q.result(distinct: true)
 	end
+
+	def add_user_to_group
+	end
+
 
 	def update
 		@user = User.find(params[:id])
@@ -17,6 +23,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+	@group = Group.new
 	@user = User.find(params[:id])
 	end
 

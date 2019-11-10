@@ -23,4 +23,5 @@ Rails.application.routes.draw do
 	 resources :admins, only: [:index, :show]
   	 delete 'admins/user_delete/:id' => 'admins#destroy', as:'user_delete'
 	 resources :post_images, only: [:new, :create, :index, :show, :destroy]
+	 resources :groups, only: [:create, :update, :destroy]
 end
