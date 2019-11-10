@@ -9,10 +9,11 @@ image
 <%= f.label :fish_image %>
 <%= f.file_field :fish_image %>
 
-name
+魚種
 <%= f.text_field :fish_name, autofocus: true, placeholder:"魚種"%>
-introduction
+数
 <%= f.text_field :count, autofocus: true %>
+大きさ
 <%= f.text_field :size, autofocus: true %>
 <%= f.submit "投稿する" %>
 <% end %>
@@ -22,9 +23,8 @@ introduction
 <%= image_tag photos.fish_image.to_s %>
 <!-- <%= photos.fish_image %> -->
 <%= photos.fish_name %>
+<%= link_to "Show", post_image_path(photos.id) %>
 <%= link_to "Destroy", post_image_path(photos.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか？' } %>
-<%= photos.latitude %>
-<%= photos.longitude %>
 <% end %>
 
 
