@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'groups/create'
+  get 'groups/destroy'
+  get 'histories/index'
+  get 'histories/new'
+  get 'histories/create'
+  get 'histories/destroy'
+  get 'regulation/new'
+  get 'regulation/create'
+  get 'regulation/destroy'
 	devise_for :admins, controllers: {
 	  sessions:      'admins/sessions',
 	  passwords:     'admins/passwords',
