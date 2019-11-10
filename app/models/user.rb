@@ -8,4 +8,5 @@ class User < ApplicationRecord
   # mount_uploader :carrierwave用に作ったカラム名, carrierwaveの設定ファイルのクラス名を関連づける
   mount_uploader :image, ImagesUploader
 
+  has_many :post_images, dependent: :destroy
 end

@@ -28,6 +28,10 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+	@user = User.find(params[:id])
+	@user.destroy
+	flash[:notice] = "You have destroyed user successfully."
+	admins_path
 	end
 
 	private

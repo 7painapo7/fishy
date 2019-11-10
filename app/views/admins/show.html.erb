@@ -1,0 +1,20 @@
+管理者画面
+
+
+<div class="container">
+<% if flash[:notice] %>
+<div class="flash">
+<%= flash[:notice] %>
+</div>
+<% end %>
+</div>
+
+<h2>User info</h2>
+<%= image_tag @user.image.to_s %>
+<%= @user.name %>
+<%= @user.introduction %>
+<!-- <%= link_to "Edit", edit_user_path(@user) %> -->
+<%= link_to "Destroy", user_delete_path(@user.id), method: :delete,data: { confirm: '本当に消しますか？' } %>
+
+
+

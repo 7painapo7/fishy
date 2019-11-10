@@ -1,16 +1,32 @@
 <div class="container">
 <% if flash[:notice] %>
-<div class="flash">
 <%= flash[:notice] %>
-</div>
 <% end %>
 </div>
 
-<h2>User info</h2>
-<%= image_tag @user.image.to_s %>
-<%= @user.name %>
-<%= @user.introduction %>
-<%= link_to "Edit", edit_user_path(@user) %>
+<%= form_for(@p) do |f| %>
+image
+<%= f.label :fish_image %>
+<%= f.file_field :fish_image %>
+
+name
+<%= f.text_field :fish_name, autofocus: true, placeholder:"魚種"%>
+introduction
+<%= f.text_field :count, autofocus: true %>
+<%= f.text_field :size, autofocus: true %>
+<%= f.submit "投稿する" %>
+<% end %>
+
+
+<% @photos.each do |photos| %>
+<%= image_tag photos.fish_image.to_s %>
+<!-- <%= photos.fish_image %> -->
+<%= photos.fish_name %>
+<%= link_to "Destroy", post_image_path(photos.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか？' } %>
+<%= photos.latitude %>
+<%= photos.longitude %>
+<% end %>
+
 
 
 <h2>gmap</h2>
@@ -30,6 +46,7 @@
 }
 </style>
 
+
 <script>
 /*
 mapを関数の外で定義(codeAddressでも使うため)
@@ -39,15 +56,36 @@ geocoderを用意
 let map
 let geocoder
 
+var marker = [];
+var center = [
+<% @photos.each do |photos| %>
+{
+  lat: <%= photos.latitude %>, // 緯度
+  lng: <%= photos.longitude %> // 経度
+  },
+<% end %>
+];
+
 function initMap(){
   // geocoderを初期化
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 34.666871 , lng: 135.498838},
-  zoom: 18
+  center: center[1], // 地図の中心を指定
+  zoom: 14
   });
+
+
+// マーカー毎の処理
+for (var i = 0; i < center.length; i++) {
+  markerLatLng = new google.maps.LatLng({lat: center[i]['lat'], lng: center[i]['lng']}); // 緯度経度のデータ作成
+  marker[i] = new google.maps.Marker({ // マーカーの追加
+      position: markerLatLng, // マーカーを立てる位置を指定
+      map: map // マーカーを立てる地図を指定
+   });
 }
+}
+
 
 
 function codeAddress(){
