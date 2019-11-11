@@ -13,10 +13,13 @@ class PostImagesController < ApplicationController
 
     def index
     @p = PostImage.new
+    # @post_image = PostImage.find(params[:id])
     @photos = PostImage.all
 	end
 
     def show
+    @post_image = PostImage.find(params[:id])
+    @photos = PostImage.all
     end
 
     def destroy

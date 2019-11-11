@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'groups/create'
+  get 'groups/destroy'
+  get 'histories/index'
+  get 'histories/new'
+  get 'histories/create'
+  get 'histories/destroy'
+  get 'regulation/new'
+  get 'regulation/create'
+  get 'regulation/destroy'
 	devise_for :admins, controllers: {
 	  sessions:      'admins/sessions',
 	  passwords:     'admins/passwords',
@@ -14,4 +23,5 @@ Rails.application.routes.draw do
 	 resources :admins, only: [:index, :show]
   	 delete 'admins/user_delete/:id' => 'admins#destroy', as:'user_delete'
 	 resources :post_images, only: [:new, :create, :index, :show, :destroy]
+	 resources :groups, only: [:create, :update, :destroy]
 end
