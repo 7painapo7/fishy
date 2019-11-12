@@ -1,4 +1,11 @@
 class GroupsController < ApplicationController
+
+  def index
+    # 罰ゲームを表示
+    @regulation = Regulation.find_by(group_id: current_user.group)
+  end
+
+
   def create
   	group = Group.new(group_params)
   	group.save

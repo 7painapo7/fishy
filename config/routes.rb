@@ -84,7 +84,7 @@ Rails.application.routes.draw do
 	 resources :admins, only: [:index, :show]
   	 delete 'admins/user_delete/:id' => 'admins#destroy', as:'user_delete'
 	 resources :post_images, only: [:new, :create, :index, :show, :destroy]
-	 resources :groups, only: [:create, :update, :show]
+	 resources :groups, only: [:index, :create, :update, :show]
 	 post 'groups/:id' => 'groups#sakujyo', as:'sakujyo'
 	 resources :histories, only: [:index, :new, :create, :destroy]
 	 resources :regulations, only: [:create, :destroy]

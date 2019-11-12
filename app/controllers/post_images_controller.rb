@@ -13,8 +13,11 @@ class PostImagesController < ApplicationController
 
     def index
     @p = PostImage.new
-    # @post_image = PostImage.find(params[:id])
     @photos = PostImage.all
+    @group = Group.find(current_user.group_id)
+
+    # 残り時間
+    @time = "2019-12-03 04:56"
 	end
 
     def show
