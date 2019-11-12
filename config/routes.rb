@@ -49,14 +49,13 @@
 #                     group GET    /groups/:id(.:format)                                                                    groups#show
 #                           PATCH  /groups/:id(.:format)                                                                    groups#update
 #                           PUT    /groups/:id(.:format)                                                                    groups#update
-#                   sakujyo PATCH  /groups/:id(.:format)                                                                    groups#sakujyo
+#                   sakujyo POST   /groups/:id(.:format)                                                                    groups#sakujyo
 #                 histories GET    /histories(.:format)                                                                     histories#index
 #                           POST   /histories(.:format)                                                                     histories#create
 #               new_history GET    /histories/new(.:format)                                                                 histories#new
 #                   history DELETE /histories/:id(.:format)                                                                 histories#destroy
-#          regulation_index POST   /regulation(.:format)                                                                    regulation#create
-#            new_regulation GET    /regulation/new(.:format)                                                                regulation#new
-#                regulation DELETE /regulation/:id(.:format)                                                                regulation#destroy
+#               regulations POST   /regulations(.:format)                                                                   regulations#create
+#                regulation DELETE /regulations/:id(.:format)                                                               regulations#destroy
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #        rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -66,6 +65,10 @@
 
 Rails.application.routes.draw do
 
+  get 'regulations/create'
+  get 'regulations/destroy'
+  get 'regulation/create'
+  get 'regulation/destroy'
 	devise_for :admins, controllers: {
 	  sessions:      'admins/sessions',
 	  passwords:     'admins/passwords',
@@ -84,5 +87,5 @@ Rails.application.routes.draw do
 	 resources :groups, only: [:create, :update, :show]
 	 post 'groups/:id' => 'groups#sakujyo', as:'sakujyo'
 	 resources :histories, only: [:index, :new, :create, :destroy]
-	 resources :regulation, only: [:new, :create, :destroy]
+	 resources :regulations, only: [:create, :destroy]
 end

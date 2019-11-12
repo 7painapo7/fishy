@@ -10,6 +10,9 @@ class GroupsController < ApplicationController
 
   def show
     @group_users = User.where(group_id: current_user.group_id)
+    @group = Group.find(current_user.group_id)
+    # ルールを作成
+    @regulation = Regulation.new
   end
 
   def update
@@ -23,7 +26,7 @@ class GroupsController < ApplicationController
     # グループを削除
     User.where(group_id: params[:id]).update_all(group_id: nil)
     redirect_to user_path(current_user)
-    flash[:notice] = "グループに削除しました。"
+    flash[:notice] = "グループを削除しました。"
   end
 
   def destroy

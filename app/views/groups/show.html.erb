@@ -1,9 +1,21 @@
+<%= @group.group_name %>杯を始めます
+
+
+参加ユーザー
 <% @group_users.each do |g| %>
 <%= image_tag g.image.to_s %>
 <%= g.name %>
 <% end %>
 
-<%=  %>
 
 
 <%= link_to 'グループ削除',sakujyo_path(current_user.group_id), method: :post, class: "btn btn-default col-xs-12" %>
+
+
+
+ルールを決める
+<%= form_for @regulation, url: regulations_path, method: :post do |f| %>
+<%= f.text_field :genre, :placeholder => "ジャンル"%><br>
+<%= f.text_field :punishment, :placeholder => "罰ゲーム"%><br>
+<%= f.submit 'ルール作成' %><br>
+<% end %>
