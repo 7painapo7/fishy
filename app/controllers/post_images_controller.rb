@@ -15,7 +15,8 @@ class PostImagesController < ApplicationController
     @p = PostImage.new
     @photos = PostImage.all
     @group = Group.find(current_user.group_id)
-
+    # 現時刻
+    @time_now = Time.now
     # 残り時間
     @time = "2019-12-03 04:56"
 	end

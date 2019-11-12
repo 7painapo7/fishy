@@ -5,12 +5,18 @@
 </div>
 
 
-<%= link_to '表彰ページへ',groups_path, class: "btn btn-default col-xs-12" %>
+<p><%= link_to '表彰ページへ',groups_path, class: "btn btn-default col-xs-12" %>
+</p>
 
-
+<p>
 大会名
 <%= @group.group_name %>
+</p>
 
+現時刻
+<p>
+<%= @time_now %>
+</p>
 
 <!-- 大会残り時間 -->
 <p>残り<span class="countdown" data-date="<%= @time %>"></span></p>
