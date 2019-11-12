@@ -9,4 +9,5 @@ class User < ApplicationRecord
   mount_uploader :image, ImagesUploader
 
   has_many :post_images, dependent: :destroy
+  belongs_to :group
 end

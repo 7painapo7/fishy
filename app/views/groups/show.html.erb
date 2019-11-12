@@ -1,0 +1,9 @@
+<% @group_users.each do |g| %>
+<%= image_tag g.image.to_s %>
+<%= g.name %>
+<% end %>
+
+<%=  %>
+
+
+<%= link_to 'グループ削除',sakujyo_path(current_user.group_id), method: :post, class: "btn btn-default col-xs-12" %>
