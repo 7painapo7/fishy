@@ -18,5 +18,10 @@
 <%= form_for @regulation, url: regulations_path, method: :post do |f| %>
 <%= f.text_field :genre, :placeholder => "ジャンル"%><br>
 <%= f.text_field :punishment, :placeholder => "罰ゲーム"%><br>
+
+<!-- カレンダー -->
+<label class="control-label" for="">終了予定日時</label>
+<%= f.datetime_select :end_time, {} %>
+
 <%= f.submit 'ルール作成' %><br>
 <% end %>

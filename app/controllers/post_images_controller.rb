@@ -18,7 +18,9 @@ class PostImagesController < ApplicationController
     # 現時刻
     @time_now = Time.now
     # 残り時間
-    @time = "2019-12-03 04:56"
+    # レコードを取ってくる
+    @time = Regulation.find_by(group_id: current_user.group_id)
+    # binding.pry
 	end
 
     def show

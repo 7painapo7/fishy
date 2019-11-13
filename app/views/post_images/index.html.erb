@@ -19,7 +19,7 @@
 </p>
 
 <!-- 大会残り時間 -->
-<p>残り<span class="countdown" data-date="<%= @time %>"></span></p>
+<p>残り<span class="countdown" data-date="<%= @time.end_time %>"></span></p>
 <script>
 window.addEventListener('load',()=>{
   Countdown();

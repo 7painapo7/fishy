@@ -12,6 +12,6 @@ class RegulationsController < ApplicationController
   end
   private
   def regulation_params
-    params.require(:regulation).permit(:genre, :punishment)
+    params.require(:regulation).permit(:genre, :punishment, :end_time)
   end
 end
