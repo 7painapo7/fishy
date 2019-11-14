@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
       # 優勝を決める計算
       reg = @regulation.genre
+
       if  reg == "size"
         @n = 0
         # 配列を作る
@@ -21,7 +22,6 @@ class GroupsController < ApplicationController
           end
 
       else reg == "count"
-        @n = 1
         users_id  = Array.new
         post_images.each do |u|
         users_id << u.user_id
