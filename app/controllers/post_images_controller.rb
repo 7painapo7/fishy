@@ -6,7 +6,6 @@ class PostImagesController < ApplicationController
 
     @post_image.latitude = EXIFR::JPEG::new(@post_image.fish_image.file.file).gps.latitude
     @post_image.longitude = EXIFR::JPEG::new(@post_image.fish_image.file.file).gps.longitude
-    # binding.pry
 
     @post_image.save
     redirect_to post_images_path
@@ -21,7 +20,7 @@ class PostImagesController < ApplicationController
     # 残り時間
     # レコードを取ってくる
     @time = Regulation.find_by(group_id: current_user.group_id)
-    # binding.pry
+    @group_users = User.where(group_id: current_user.group_id)
 	end
 
     def show

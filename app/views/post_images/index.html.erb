@@ -10,6 +10,13 @@
 大会名
 <%= @group.group_name %>
 </p>
+<p>
+参加ユーザー
+<% @group_users.each do |g| %>
+<%= image_tag g.image.to_s %>
+<%= g.name %>
+<% end %>
+</p>
 
 現時刻
 <p>
@@ -67,7 +74,7 @@ const Countdown = function(){
 
 
 <%= form_for(@p) do |f| %>
-image
+
 <%= f.label :fish_image %>
 <%= f.file_field :fish_image %>
 
@@ -80,12 +87,11 @@ image
 <%= f.submit "投稿する" %>
 <% end %>
 
-<% @photos.each do |photos| %>
-<%= image_tag photos.fish_image.to_s %>
-<!-- <%= photos.fish_image %> -->
-<%= photos.fish_name %>
-<%= link_to "Show", post_image_path(photos.id) %>
-<%= link_to "Destroy", post_image_path(photos.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか？' } %>
+<% @photos.each do |photo| %>
+<%= image_tag photo.fish_image.to_s %>
+<%= photo.fish_name %>
+<%= link_to "Show", post_image_path(photo.id) %>
+<%= link_to "Destroy", post_image_path(photo.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか？' } %>
 <% end %>
 
 

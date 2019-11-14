@@ -5,7 +5,46 @@ class GroupsController < ApplicationController
     @regulation = Regulation.find_by(group_id: current_user.group)
     # 参加ユーザーを表示
     @group_users = User.where(group_id: current_user.group_id)
-    binding.pry
+    post_images = PostImage.where(user_id: @group_users)
+    # 優勝を決める計算
+
+    # if Regulation.genre == "size"
+    # 配列を作る
+    # sizes = Array.new
+    # post_images.each do |s|
+    #   sizes << s.size
+    # max_sizes = sizes.max
+    # @winners = post_images.where(size: max_sizes)
+    # binding.pry
+    # end
+
+    # else Regulation.genre == "count"
+    users_id  = Array.new
+    post_images.each do |p|
+      users_id << p.user_id
+    end
+
+    # counts  = Array.new
+    # user_id.each do |u|
+    #   @posts = post_images.where(user_id: u)
+    #     @post.each do |s|
+    #       counts << s.count
+    #     end
+    # end
+
+    counts  = Array.new
+    post_images.each do |c|
+      counts << c.count
+    end
+
+    sum_counts =Array.new
+    counts.sum.each do |s|
+      sum_counts << s.counts
+    end
+    max_counts = counts.max
+
+
+    @winners = post_images.where(count: max_counts)
   end
 
 

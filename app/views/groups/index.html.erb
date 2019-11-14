@@ -1,6 +1,7 @@
 優勝は
-<%= %>です
-
+<% @winners.each do |w| %>
+<%= w.user.name %>です
+<% end %>
 
 罰ゲームは
 <%= @regulation.punishment %>です
