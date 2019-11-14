@@ -1,11 +1,12 @@
 優勝は
+<% if @n = 0 %>
 <% @winners.each do |w| %>
 <%= w.user.name %>です
 <% end %>
-
-
+<% else @n = 1 %>
 <% @fff.reverse.each do |w| %>
 <%= User.find(w).name %>です
+<% end %>
 <% end %>
 
 罰ゲームは
