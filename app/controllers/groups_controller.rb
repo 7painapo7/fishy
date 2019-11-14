@@ -8,25 +8,26 @@ class GroupsController < ApplicationController
     post_images = PostImage.where(user_id: @group_users)
     # 優勝を決める計算
 
-    # if Regulation.genre == "size"
-    # 配列を作る
-    # sizes = Array.new
-    # post_images.each do |s|
-    #   sizes << s.size
-    # max_sizes = sizes.max
-    # @winners = post_images.where(size: max_sizes)
-    # binding.pry
-    # end
+if Regulation.genre == "size"
+  # 配列を作る
+  sizes = Array.new
+  post_images.each do |s|
+    sizes << s.size
+  max_sizes = sizes.max
+  @winners = post_images.where(size: max_sizes)
+  binding.pry
+end
 
-    # else Regulation.genre == "count"
-    users_id  = Array.new
-    post_images.each do |u|
-      users_id << u.user_id
-    end
-    # 重複を避ける
-    uniq_id = users_id.uniq
+else Regulation.genre == "count"
+  users_id  = Array.new
+  post_images.each do |u|
+  users_id << u.user_id
+end
+# 重複を避ける
+uniq_id = users_id.uniq
 
 
+# @sに各ユーザーのcountの合計を作る
 result  = Array.new
   uniq_id.each do |i|
     @post = post_images.where(user_id: i)
@@ -37,9 +38,8 @@ result  = Array.new
   end
       result << @s
   end
-  
 
-
+# さらに合計の配列を作る
   final = Array.new
   most = result.max
   winners = result.each_with_index.select{|num,index| num == most}
@@ -48,18 +48,13 @@ result  = Array.new
    final << @i
   end
 
-
+# 合計とユーザーidの配列の順番が対応してるので特定させる処理
   @fff = Array.new
     final.each do |f|
       a = uniq_id[f]
       @fff << a
   end
-
-
-
-
-
-  end
+end
 
 
   def create
