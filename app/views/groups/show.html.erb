@@ -1,9 +1,29 @@
+大会名
+<%= @group.group_name %>
+
+
+参加ユーザー
 <% @group_users.each do |g| %>
 <%= image_tag g.image.to_s %>
 <%= g.name %>
 <% end %>
 
-<%=  %>
 
 
 <%= link_to 'グループ削除',sakujyo_path(current_user.group_id), method: :post, class: "btn btn-default col-xs-12" %>
+
+
+
+ルールを決める
+<%= form_for @regulation, url: regulations_path, method: :post do |f| %>
+
+勝敗
+<%= f.select :genre, [['大きさ勝負','size'],['数勝負','count']] %><br>
+
+罰ゲーム
+<%= f.text_field :punishment, :placeholder => "罰ゲーム内容"%><br>
+<!-- カレンダー -->
+<label class="control-label" for="">終了予定日時</label>
+<%= f.datetime_select :end_time, {} %>
+<%= f.submit 'ルール作成' %><br>
+<% end %>

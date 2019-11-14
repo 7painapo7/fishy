@@ -1,4 +1,5 @@
 class PostImagesController < ApplicationController
+    before_action :authenticate_user!
     def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
@@ -13,8 +14,14 @@ class PostImagesController < ApplicationController
 
     def index
     @p = PostImage.new
-    # @post_image = PostImage.find(params[:id])
     @photos = PostImage.all
+    @group = Group.find(current_user.group_id)
+    # 現時刻
+    @time_now = Time.now
+    # 残り時間
+    # レコードを取ってくる
+    @time = Regulation.find_by(group_id: current_user.group_id)
+    # binding.pry
 	end
 
     def show

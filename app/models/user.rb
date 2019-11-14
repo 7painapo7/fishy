@@ -9,5 +9,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImagesUploader
 
   has_many :post_images, dependent: :destroy
-  belongs_to :group
+  has_many :histories, dependent: :destroy
+  # optional: trueでsign upできるようになる
+  belongs_to :group, optional: true
 end

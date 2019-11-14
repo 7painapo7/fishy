@@ -1,4 +1,14 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+  def index
+    # 罰ゲームを表示
+    @regulation = Regulation.find_by(group_id: current_user.group)
+    # 参加ユーザーを表示
+    @group_users = User.where(group_id: current_user.group_id)
+    binding.pry
+  end
+
+
   def create
   	group = Group.new(group_params)
   	group.save
@@ -10,6 +20,9 @@ class GroupsController < ApplicationController
 
   def show
     @group_users = User.where(group_id: current_user.group_id)
+    @group = Group.find(current_user.group_id)
+    # ルールを作成
+    @regulation = Regulation.new
   end
 
   def update
@@ -23,7 +36,7 @@ class GroupsController < ApplicationController
     # グループを削除
     User.where(group_id: params[:id]).update_all(group_id: nil)
     redirect_to user_path(current_user)
-    flash[:notice] = "グループに削除しました。"
+    flash[:notice] = "グループを削除しました。"
   end
 
   def destroy
