@@ -20,31 +20,45 @@ class GroupsController < ApplicationController
 
     # else Regulation.genre == "count"
     users_id  = Array.new
-    post_images.each do |p|
-      users_id << p.user_id
+    post_images.each do |u|
+      users_id << u.user_id
     end
-
-    # counts  = Array.new
-    # user_id.each do |u|
-    #   @posts = post_images.where(user_id: u)
-    #     @post.each do |s|
-    #       counts << s.count
-    #     end
-    # end
-
-    counts  = Array.new
-    post_images.each do |c|
-      counts << c.count
-    end
-
-    sum_counts =Array.new
-    counts.sum.each do |s|
-      sum_counts << s.counts
-    end
-    max_counts = counts.max
+    # 重複を避ける
+    uniq_id = users_id.uniq
 
 
-    @winners = post_images.where(count: max_counts)
+result  = Array.new
+  uniq_id.each do |i|
+    @post = post_images.where(user_id: i)
+    @s=0
+        @post.each do |post|
+        @s += post.count
+          # counts.sum << post.count
+  end
+      result << @s
+  end
+  
+
+
+  final = Array.new
+  most = result.max
+  winners = result.each_with_index.select{|num,index| num == most}
+  winners.each do |w|
+   @i = w[1]
+   final << @i
+  end
+
+
+  @fff = Array.new
+    final.each do |f|
+      a = uniq_id[f]
+      @fff << a
+  end
+
+
+
+
+
   end
 
 

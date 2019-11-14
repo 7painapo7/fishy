@@ -3,6 +3,11 @@
 <%= w.user.name %>です
 <% end %>
 
+
+<% @fff.each do |w| %>
+<%= User.find(w).name %>です
+<% end %>
+
 罰ゲームは
 <%= @regulation.punishment %>です
 
