@@ -1,4 +1,5 @@
 class RegulationsController < ApplicationController
+  before_action :authenticate_user!
   def create
      @regulation = Regulation.new(regulation_params)
      @regulation.group_id = current_user.group.id

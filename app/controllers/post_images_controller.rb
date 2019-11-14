@@ -1,4 +1,5 @@
 class PostImagesController < ApplicationController
+    before_action :authenticate_user!
     def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id

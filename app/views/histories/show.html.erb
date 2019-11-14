@@ -1,0 +1,6 @@
+<p>過去の釣果一覧</p>
+<% @histories.each do |p| %>
+<%= image_tag p.fish_image.to_s %>
+
+<%= p.fish_name %>
+<% end %>

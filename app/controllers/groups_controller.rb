@@ -1,10 +1,11 @@
 class GroupsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     # 罰ゲームを表示
     @regulation = Regulation.find_by(group_id: current_user.group)
     # 参加ユーザーを表示
     @group_users = User.where(group_id: current_user.group_id)
+    binding.pry
   end
 
 
