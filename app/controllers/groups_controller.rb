@@ -85,10 +85,17 @@ class GroupsController < ApplicationController
   end
 
   def sakujyo
-    # グループを削除
+    # グループ自体を削除
     User.where(group_id: params[:id]).update_all(group_id: nil)
     redirect_to user_path(current_user)
     flash[:notice] = "グループを削除しました。"
+  end
+
+  def taisyutsu
+    # グループを退出
+    current_user.update_attributes(group_id: nil)
+    redirect_to user_path(current_user)
+    flash[:notice] = "グループから退出しました。"
   end
 
   def destroy

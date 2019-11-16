@@ -1,6 +1,10 @@
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                                                                              Controller#Action
+#        regulations_create GET    /regulations/create(.:format)                                                            regulations#create
+#       regulations_destroy GET    /regulations/destroy(.:format)                                                           regulations#destroy
+#         regulation_create GET    /regulation/create(.:format)                                                             regulation#create
+#        regulation_destroy GET    /regulation/destroy(.:format)                                                            regulation#destroy
 #         new_admin_session GET    /admins/sign_in(.:format)                                                                admins/sessions#new
 #             admin_session POST   /admins/sign_in(.:format)                                                                admins/sessions#create
 #     destroy_admin_session DELETE /admins/sign_out(.:format)                                                               admins/sessions#destroy
@@ -45,16 +49,21 @@
 #            new_post_image GET    /post_images/new(.:format)                                                               post_images#new
 #                post_image GET    /post_images/:id(.:format)                                                               post_images#show
 #                           DELETE /post_images/:id(.:format)                                                               post_images#destroy
-#                    groups POST   /groups(.:format)                                                                        groups#create
+#          physical_deleted POST   /post_images/:id(.:format)                                                               post_images#physical_deleted
+#                    groups GET    /groups(.:format)                                                                        groups#index
+#                           POST   /groups(.:format)                                                                        groups#create
 #                     group GET    /groups/:id(.:format)                                                                    groups#show
 #                           PATCH  /groups/:id(.:format)                                                                    groups#update
 #                           PUT    /groups/:id(.:format)                                                                    groups#update
 #                   sakujyo POST   /groups/:id(.:format)                                                                    groups#sakujyo
+#                 taisyutsu POST   /groups/:id(.:format)                                                                    groups#taisyutsu
 #                 histories GET    /histories(.:format)                                                                     histories#index
 #                           POST   /histories(.:format)                                                                     histories#create
 #               new_history GET    /histories/new(.:format)                                                                 histories#new
-#                   history DELETE /histories/:id(.:format)                                                                 histories#destroy
-#               regulations POST   /regulations(.:format)                                                                   regulations#create
+#                   history GET    /histories/:id(.:format)                                                                 histories#show
+#                           DELETE /histories/:id(.:format)                                                                 histories#destroy
+#               regulations GET    /regulations(.:format)                                                                   regulations#index
+#                           POST   /regulations(.:format)                                                                   regulations#create
 #                regulation DELETE /regulations/:id(.:format)                                                               regulations#destroy
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
@@ -86,7 +95,8 @@ Rails.application.routes.draw do
 	 resources :post_images, only: [:new, :create, :index, :show, :destroy]
 	 post 'post_images/:id' => 'post_images#physical_deleted' ,as:'physical_deleted'
 	 resources :groups, only: [:index, :create, :update, :show]
-	 post 'groups/:id' => 'groups#sakujyo', as:'sakujyo'
+	 post 'groups_sakujyo/:id' => 'groups#sakujyo', as:'sakujyo'
+	 post 'groups_taisyutsu/:id' => 'groups#taisyutsu', as:'taisyutsu'
 	 resources :histories, only: [:index, :new, :create, :destroy, :show]
 	 resources :regulations, only: [:index, :create, :destroy]
 end
