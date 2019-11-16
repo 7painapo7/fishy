@@ -16,10 +16,11 @@ class PostImagesController < ApplicationController
     @photos = PostImage.all
     @group = Group.find(current_user.group_id)
     # 現時刻
-    @time_now = Time.now
+
     # 残り時間
     # レコードを取ってくる
     @time = Regulation.find_by(group_id: current_user.group_id)
+
     @group_users = User.where(group_id: current_user.group_id)
 	end
 

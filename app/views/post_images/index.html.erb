@@ -19,12 +19,22 @@
 </p>
 
 現時刻
-<p>
-<%= @time_now %>
-</p>
+<body>
+    <h1 id="time"></h1>
+    <script>
+    time();
+    function time(){
+        var now = new Date();
+        document.getElementById("time").innerHTML = now.toLocaleTimeString();
+    }
+    setInterval('time()',1000);
+    </script>
+</body>
+</html>
 
-<!-- 大会残り時間 -->
-<p>残り<span class="countdown" data-date="<%= @time.end_time %>"></span></p>
+
+
+<p>大会残り時間<span class="countdown" data-date="<%= @time.end_time %>"></span></p>
 <script>
 window.addEventListener('load',()=>{
   Countdown();
