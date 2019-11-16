@@ -91,7 +91,7 @@ const Countdown = function(){
 <%= image_tag photo.fish_image.to_s %>
 <%= photo.fish_name %>
 <%= link_to "Show", post_image_path(photo.id) %>
-<%= link_to "Destroy", post_image_path(photo.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか？' } %>
+<%= link_to "Destroy", physical_deleted_path(photo.id), class:"btn-sm btn-danger", method: :post, data: { confirm: '本当に消しますか？' } %>
 <% end %>
 
 

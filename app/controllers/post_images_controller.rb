@@ -28,12 +28,24 @@ class PostImagesController < ApplicationController
     @photos = PostImage.all
     end
 
-    def destroy
+    # 論理削除
+    # def destroy
+    # @post_image = PostImage.find(params[:id])
+    # @post_image.destroy
+    # flash[:notice] = "You have destroyed fishimage successfully."
+    # redirect_to post_images_path
+    # end
+
+    # 物理削除
+    def physical_deleted
     @post_image = PostImage.find(params[:id])
-    @post_image.destroy
+    @post_image.really_destroy!
     flash[:notice] = "You have destroyed fishimage successfully."
     redirect_to post_images_path
     end
+
+
+
 
 	# 投稿データのストロングパラメータ
     private
