@@ -5,7 +5,7 @@
 <%= w.user.name %>です
 <% end %>
 <% else%>
-<% @fff.reverse.each do |w| %>
+<% @fff.each do |w| %>
 <%= User.find(w).name %>です
 <% end %>
 <% end %>
