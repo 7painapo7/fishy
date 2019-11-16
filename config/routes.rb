@@ -87,6 +87,6 @@ Rails.application.routes.draw do
 	 post 'post_images/:id' => 'post_images#physical_deleted' ,as:'physical_deleted'
 	 resources :groups, only: [:index, :create, :update, :show]
 	 post 'groups/:id' => 'groups#sakujyo', as:'sakujyo'
-	 # resources :histories, only: [:index, :new, :create, :destroy, :show]
+	 resources :histories, only: [:index, :new, :create, :destroy, :show]
 	 resources :regulations, only: [:index, :create, :destroy]
 end

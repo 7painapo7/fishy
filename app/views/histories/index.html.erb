@@ -1,11 +1,8 @@
-
-<p>今日のあなたの釣果</p>
-<% @post_images.each do |p| %>
+<p>過去のあなたの釣果一覧</p>
+<% @photos.each do |p| %>
 <%= image_tag p.fish_image.to_s %>
 <%= p.fish_name %>
+<%= link_to "詳細ページ", history_path(p.id) %>
 <% end %>
 
-<p>過去の釣果一覧へ</p>
-<%= form_for @history do |f| %>
-<%= f.submit '過去の釣果', data: { confirm: "大会を終了します"},class:"btn btn-info", type:"submit" %>
-<% end %>
+
