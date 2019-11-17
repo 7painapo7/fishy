@@ -1,7 +1,12 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   def index
-    # 罰ゲームを表示
+      # 論理削除のための変数
+      @group_users = User.where(group_id: current_user.group_id)
+      @photos = PostImage.where(user_id: @group_users)
+
+
+      # 罰ゲームを表示
       @regulation = Regulation.find_by(group_id: current_user.group)
       # 参加ユーザーを表示
       @group_users = User.where(group_id: current_user.group_id)
@@ -59,7 +64,6 @@ class GroupsController < ApplicationController
         end
       end
   end
-
 
   def create
    group = Group.new(group_params)

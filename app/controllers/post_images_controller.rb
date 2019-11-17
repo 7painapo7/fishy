@@ -30,7 +30,7 @@ class PostImagesController < ApplicationController
     @group_users = User.where(group_id: current_user.group_id)
     @photos = PostImage.where(user_id: @group_users)
     @photos.destroy_all
-    redirect_to groups_path
+    redirect_to users_path
     end
 
     # 物理削除
