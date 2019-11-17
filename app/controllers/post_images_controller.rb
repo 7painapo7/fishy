@@ -13,15 +13,11 @@ class PostImagesController < ApplicationController
 
     def index
     @p = PostImage.new
-    @photos = PostImage.all
     @group = Group.find(current_user.group_id)
-    # 現時刻
-
-    # 残り時間
-    # レコードを取ってくる
     @time = Regulation.find_by(group_id: current_user.group_id)
-
     @group_users = User.where(group_id: current_user.group_id)
+    # 同じgroup_idを持つものだけ表示
+    @photos = PostImage.where(user_id: @group_users)
 	end
 
     def show
@@ -30,12 +26,12 @@ class PostImagesController < ApplicationController
     end
 
     # 論理削除
-    # def destroy
-    # @post_image = PostImage.find(params[:id])
-    # @post_image.destroy
-    # flash[:notice] = "You have destroyed fishimage successfully."
-    # redirect_to post_images_path
-    # end
+    def destroy
+    @group_users = User.where(group_id: current_user.group_id)
+    @photos = PostImage.where(user_id: @group_users)
+    @photos.destroy
+    redirect_to groups_path
+    end
 
     # 物理削除
     def physical_deleted

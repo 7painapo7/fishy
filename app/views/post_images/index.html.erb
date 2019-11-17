@@ -6,19 +6,17 @@
 
 
 
+<p>大会名</p>
+<p><%= @group.group_name %></p>
+<p>参加ユーザー</p>
 <p>
-大会名
-<%= @group.group_name %>
-</p>
-<p>
-参加ユーザー
 <% @group_users.each do |g| %>
 <%= image_tag g.image.to_s %>
 <%= g.name %>
 <% end %>
 </p>
 
-現時刻
+<p>現時刻</p>
 <body>
     <h1 id="time"></h1>
     <script>
@@ -51,6 +49,11 @@ const Countdown = function(){
       const now_unix = Math.floor(new Date()/1000);
       let sec = target_unix-now_unix;
       let cd_text = '';
+      if (sec == 0) {
+        alert('終了です!');
+        // window.location.href = '/groups'
+        return false;
+      }
       if(sec>=86400){
         cd_text += Math.floor(sec/86400)+'日';
         sec = sec%86400;
@@ -67,11 +70,7 @@ const Countdown = function(){
       }else{
         cd_text += '00分';
       }
-      if (sec == 0) {
-        alert('終了です!');
-        window.location.href = '/groups'
-        return false;
-      }
+
       cd_text += td(sec)+'秒';
       cd_area.textContent = cd_text;
     },1000);
@@ -196,3 +195,6 @@ function codeAddress(){
 </script>
 
 <script src= <%= ENV['Maps_JavaScript_URL']%> async defer></script>
+
+
+<%= link_to "大会を終了する", groups_path, class: "btn btn-default col-xs-12" %>

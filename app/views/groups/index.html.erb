@@ -15,8 +15,10 @@
 
 参加ユーザー
 <% @group_users.each do |g| %>
+<div class = "container">
 <%= image_tag g.image.to_s %>
 <%= g.name %>
+</div>
 <% end %>
 
-<%= link_to "過去の釣果一覧へ移動", histories_path %>
+<%= link_to "過去の釣果一覧へ移動", histories_path, class: "btn btn-default col-xs-12" %>

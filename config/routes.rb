@@ -55,8 +55,8 @@
 #                     group GET    /groups/:id(.:format)                                                                    groups#show
 #                           PATCH  /groups/:id(.:format)                                                                    groups#update
 #                           PUT    /groups/:id(.:format)                                                                    groups#update
-#                   sakujyo POST   /groups/:id(.:format)                                                                    groups#sakujyo
-#                 taisyutsu POST   /groups/:id(.:format)                                                                    groups#taisyutsu
+#                   sakujyo POST   /groups_sakujyo/:id(.:format)                                                            groups#sakujyo
+#                 taisyutsu POST   /groups_taisyutsu/:id(.:format)                                                          groups#taisyutsu
 #                 histories GET    /histories(.:format)                                                                     histories#index
 #                           POST   /histories(.:format)                                                                     histories#create
 #               new_history GET    /histories/new(.:format)                                                                 histories#new
