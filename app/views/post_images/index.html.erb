@@ -1,11 +1,3 @@
-<div class="container">
-<% if flash[:notice] %>
-<%= flash[:notice] %>
-<% end %>
-</div>
-
-
-
 <p>大会名</p>
 <p><%= @group.group_name %></p>
 <p>参加ユーザー</p>
@@ -197,4 +189,4 @@ function codeAddress(){
 <script src= <%= ENV['Maps_JavaScript_URL']%> async defer></script>
 
 
-<%= link_to "大会を終了する", groups_path,  class: "btn btn-default col-xs-12" %>
+<%= link_to "大会を終了する", groups_path, class: "btn btn-default col-xs-12" %>
