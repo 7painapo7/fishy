@@ -13,14 +13,11 @@ class PostImagesController < ApplicationController
 
     def index
     @p = PostImage.new
-    @photos = PostImage.all
     @group = Group.find(current_user.group_id)
-    # 現時刻
-    @time_now = Time.now
-    # 残り時間
-    # レコードを取ってくる
     @time = Regulation.find_by(group_id: current_user.group_id)
     @group_users = User.where(group_id: current_user.group_id)
+    # 同じgroup_idを持つものだけ表示
+    @photos = PostImage.where(user_id: @group_users)
 	end
 
     def show
@@ -28,12 +25,24 @@ class PostImagesController < ApplicationController
     @photos = PostImage.all
     end
 
+    # 論理削除
     def destroy
+    @group_users = User.where(group_id: current_user.group_id)
+    @photos = PostImage.where(user_id: @group_users)
+    @photos.destroy_all
+    redirect_to users_path
+    end
+
+    # 物理削除
+    def physical_deleted
     @post_image = PostImage.find(params[:id])
-    @post_image.destroy
+    @post_image.really_destroy!
     flash[:notice] = "You have destroyed fishimage successfully."
     redirect_to post_images_path
     end
+
+
+
 
 	# 投稿データのストロングパラメータ
     private

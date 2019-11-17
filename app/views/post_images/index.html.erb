@@ -6,25 +6,36 @@
 
 
 
+<p>大会名</p>
+<p><%= @group.group_name %></p>
+<p>参加ユーザー</p>
 <p>
-大会名
-<%= @group.group_name %>
-</p>
-<p>
-参加ユーザー
 <% @group_users.each do |g| %>
 <%= image_tag g.image.to_s %>
 <%= g.name %>
 <% end %>
 </p>
 
-現時刻
-<p>
-<%= @time_now %>
-</p>
+<p>現時刻</p>
+<body>
+    <h1 id="time"></h1>
+    <script>
+    time();
+    function time(){
+        var now = new Date();
+        document.getElementById("time").innerHTML = now.toLocaleTimeString();
+    }
+    setInterval('time()',1000);
+    </script>
+</body>
+</html>
 
-<!-- 大会残り時間 -->
-<p>残り<span class="countdown" data-date="<%= @time.end_time %>"></span></p>
+
+
+<p>大会残り時間</p>
+<span class="countdown" data-date="<%= @time.end_time %>"></span>
+
+
 <script>
 window.addEventListener('load',()=>{
   Countdown();
@@ -38,6 +49,11 @@ const Countdown = function(){
       const now_unix = Math.floor(new Date()/1000);
       let sec = target_unix-now_unix;
       let cd_text = '';
+      if (sec == 0) {
+        alert('終了です!');
+        // window.location.href = '/groups'
+        return false;
+      }
       if(sec>=86400){
         cd_text += Math.floor(sec/86400)+'日';
         sec = sec%86400;
@@ -54,6 +70,7 @@ const Countdown = function(){
       }else{
         cd_text += '00分';
       }
+
       cd_text += td(sec)+'秒';
       cd_area.textContent = cd_text;
     },1000);
@@ -91,7 +108,7 @@ const Countdown = function(){
 <%= image_tag photo.fish_image.to_s %>
 <%= photo.fish_name %>
 <%= link_to "Show", post_image_path(photo.id) %>
-<%= link_to "Destroy", post_image_path(photo.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか？' } %>
+<%= link_to "Destroy", physical_deleted_path(photo.id), class:"btn-sm btn-danger", method: :post, data: { confirm: '本当に消しますか？' } %>
 <% end %>
 
 
@@ -180,8 +197,4 @@ function codeAddress(){
 <script src= <%= ENV['Maps_JavaScript_URL']%> async defer></script>
 
 
-
-
-
-<p><%= link_to '大会を終了して表彰ページへ',groups_path, class: "btn btn-default col-xs-12" %>
-</p>
+<%= link_to "大会を終了する", groups_path,  class: "btn btn-default col-xs-12" %>

@@ -10,7 +10,8 @@
 
 
 
-<%= link_to 'グループ削除',sakujyo_path(current_user.group_id), method: :post, class: "btn btn-default col-xs-12" %>
+<%= link_to 'グループを削除',sakujyo_path(current_user.group_id), method: :post, class: "btn btn-default col-xs-12" %>
+<%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post, class: "btn btn-default col-xs-12" %>
 
 
 

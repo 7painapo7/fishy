@@ -1,11 +1,11 @@
 優勝は
+
 <% if @n == 0 %>
-<% binding.pry %>
 <% @winners.each do |w| %>
 <%= w.user.name %>です
 <% end %>
 <% else%>
-<% @fff.reverse.each do |w| %>
+<% @fff.each do |w| %>
 <%= User.find(w).name %>です
 <% end %>
 <% end %>
@@ -15,6 +15,11 @@
 
 参加ユーザー
 <% @group_users.each do |g| %>
+<div class = "container">
 <%= image_tag g.image.to_s %>
 <%= g.name %>
+</div>
 <% end %>
+
+
+<%= link_to "大会を終了する", post_image_path(@photos), method: :delete, class: "btn btn-default col-xs-12" %>

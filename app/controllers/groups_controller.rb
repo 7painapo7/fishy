@@ -1,7 +1,12 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   def index
-    # 罰ゲームを表示
+      # 論理削除のための変数
+      @group_users = User.where(group_id: current_user.group_id)
+      @photos = PostImage.where(user_id: @group_users)
+
+
+      # 罰ゲームを表示
       @regulation = Regulation.find_by(group_id: current_user.group)
       # 参加ユーザーを表示
       @group_users = User.where(group_id: current_user.group_id)
@@ -60,7 +65,6 @@ class GroupsController < ApplicationController
       end
   end
 
-
   def create
    group = Group.new(group_params)
    group.save
@@ -85,10 +89,17 @@ class GroupsController < ApplicationController
   end
 
   def sakujyo
-    # グループを削除
+    # グループ自体を削除
     User.where(group_id: params[:id]).update_all(group_id: nil)
     redirect_to user_path(current_user)
     flash[:notice] = "グループを削除しました。"
+  end
+
+  def taisyutsu
+    # グループを退出
+    current_user.update_attributes(group_id: nil)
+    redirect_to user_path(current_user)
+    flash[:notice] = "グループから退出しました。"
   end
 
   def destroy
