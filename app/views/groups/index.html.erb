@@ -1,25 +1,23 @@
-優勝は
-
+<div class="center">
+<p>優勝は</p>
 <% if @n == 0 %>
 <% @winners.each do |w| %>
-<%= w.user.name %>です
+<p><%= w.user.name %>です</p>
 <% end %>
 <% else%>
 <% @fff.each do |w| %>
-<%= User.find(w).name %>です
+<p><%= User.find(w).name %>です</p>
 <% end %>
 <% end %>
 
-罰ゲームは
-<%= @regulation.punishment %>です
+<p>罰ゲームは</p>
+<p><%= @regulation.punishment %>です</p>
 
-参加ユーザー
+<p>参加ユーザー</p>
 <% @group_users.each do |g| %>
-<div class = "container">
-<%= image_tag g.image.to_s %>
-<%= g.name %>
-</div>
+<p><%= image_tag g.image.to_s, class: "user_icon" %></p>
+<p><%= g.name %></p>
 <% end %>
-
+</div>
 
 <%= link_to "大会を終了する", post_image_path(@photos), method: :delete, class: "btn btn-default col-xs-12" %>

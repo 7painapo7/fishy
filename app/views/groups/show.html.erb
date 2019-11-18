@@ -1,30 +1,34 @@
-大会名
-<%= @group.group_name %>
-
-
-参加ユーザー
+<div class="container">
+<p>大会名</p>
+<p><%= @group.group_name %></p>
+<p>参加ユーザー</p>
 <% @group_users.each do |g| %>
-<%= image_tag g.image.to_s %>
-<%= g.name %>
+<div class="col-xs-2">
+<%= image_tag g.image.to_s, class: "user_icon" %>
+<p class="center"><%= g.name %></p>
+</div>
 <% end %>
+</div>
 
 
 
-<%= link_to 'グループを削除',sakujyo_path(current_user.group_id), method: :post, class: "btn btn-default col-xs-12" %>
-<%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post, class: "btn btn-default col-xs-12" %>
 
 
 
-ルールを決める
+<div class="container">
+<p>ルール</p>
 <%= form_for @regulation, url: regulations_path, method: :post do |f| %>
-
-勝敗
+<p>勝敗</p><br>
 <%= f.select :genre, [['大きさ勝負','size'],['数勝負','count']] %><br>
-
-罰ゲーム
-<%= f.text_field :punishment, :placeholder => "罰ゲーム内容"%><br>
+<p>罰ゲーム</p><br>
+<%= f.text_field :punishment, :placeholder => "内容"%><br>
 <!-- カレンダー -->
-<label class="control-label" for="">終了予定日時</label>
-<%= f.datetime_select :end_time, {} %>
-<%= f.submit 'ルール作成' %><br>
+<p class="control-label" for="">終了予定日時</p><br>
+<%= f.datetime_select :end_time, {} %><br>
+<%= f.submit '大会を始める', class: "btn btn-info" %><br>
 <% end %>
+
+
+<p><%= link_to 'グループを削除',sakujyo_path(current_user.group_id), method: :post %></p>
+<p><%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post %></p>
+</div>

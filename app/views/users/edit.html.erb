@@ -1,3 +1,5 @@
+<div class="center">
+<p>アカウント情報</p>
 <%= form_for(@user) do |f| %><br>
 <%= f.label :image %><br>
 <%= f.file_field :image %><br>
@@ -5,7 +7,8 @@
 <%= f.text_field :name, autofocus: true, placeholder:"名前"%><br>
 <%= f.label :introduction %><br>
 <%= f.text_field :introduction, autofocus: true %><br>
-<%= f.submit "Update User" %><br>
+<%= f.submit "更新", class: "btn btn-default active" %><br>
 <% end %>
 
-<%= link_to "Destroy", user_path(@user.id),class: "btn btn-default active", method: :delete,data: { confirm: '本当に消しますか？' } %>
+<%= link_to "削除", user_path(@user.id), method: :delete,data: { confirm: '本当に消しますか？' } %>
+</div>

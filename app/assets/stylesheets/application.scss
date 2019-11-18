@@ -32,11 +32,15 @@ li {
 }
 
 .user_icon {
-	height: 200px;
+	height: 150px;
 	border-radius: 50%;
-	 border: 5px solid black;
+	 border: 3px solid #5BC0DE;
 }
 
 .center {
 	text-align: center;
+}
+
+#user_imagem, #post_image_fish_image {
+  margin: 0 auto;
 }
