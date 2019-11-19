@@ -10,20 +10,29 @@
 
 
 <% @users.each do |user| %>
-	<div class="row">
-		<div class="col-xs-2">
+	<div class="user_row row">
+		<div class="col-xs-3">
 		<%= image_tag user.image.to_s, class: "user_icon" %>
 		</div>
+<!-- 		<div class="col-xs-2">
 		<p><%= user.name %></p>
+		</div> -->
+		<div class="col-xs-3">
+		<p><%= link_to user.name, user_path(user.id) %></p>
+		</div>
+		<div class="col-xs-3">
 		<p><%= user.introduction %></p>
-		<p><%= link_to "詳細", user_path(user.id) %></p>
-
+		</div>
 		<% if user.group_id == nil %>
+			<div class="col-xs-3">
 			<%= form_for user, url: group_path(user.id), method: :PATCH do |c| %>
 			<p><%= c.submit 'グループに招待', class: "btn btn-info" %></p>
 			<% end %>
+			</div>
 		<% else %>
+			<div class="col-xs-3">
 			<p>グループに参加中</p>
+			</div>
 		<% end %>
 	</div>
 <% end %>

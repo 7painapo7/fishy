@@ -1,8 +1,8 @@
 <p>過去のあなたの釣果一覧</p>
 <% @photos.each do |p| %>
-<%= image_tag p.fish_image.to_s %>
-<%= p.fish_name %>
-<%= link_to "詳細ページ", history_path(p.id) %>
+	<%= link_to history_path(p.id) do %>
+	<%= image_tag p.fish_image.to_s, class: "fish_image" %>
+	<% end %>
 <% end %>
 
 

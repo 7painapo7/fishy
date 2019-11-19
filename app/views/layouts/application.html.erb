@@ -47,6 +47,10 @@
               <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
             </li>
 
+             <li class="">
+              <%= link_to "過去の釣果一覧", histories_path%>
+            </li>
+
             <li class="">
               <!-- あとで変える -->
               <%= link_to "ユーザ一覧", users_path %>
@@ -91,7 +95,7 @@
 
 
   <footer class="footer style-2">
-    <div class="container center">
+    <div class="center">
       <p class="no-margin" style="font-size: 11px;">
         <br>
 

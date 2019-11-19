@@ -1,18 +1,12 @@
-<%= image_tag @post_image.fish_image.to_s %>
-<%= @post_image.fish_name %>
-<%= @post_image.count %>
-<%= @post_image.size %>
+<%= image_tag @post_image.fish_image.to_s, class: "fish_image" %><br>
+<%= @post_image.fish_name %><br>
+<%= @post_image.count %><br>
+<%= @post_image.size %><br>
 
-
-
+<%= link_to "削除", history_path(@post_image.id), class:"btn-sm btn-danger", method: :delete, data: { confirm: '本当に消しますか？' } %>
 
 
 <!-- ここでは写真が投稿された位置だけマーカーを表示させる -->
-
-
-
-
-
 <h2>gmap</h2>
 <%=ENV['Maps_JavaScript_API']%>
 

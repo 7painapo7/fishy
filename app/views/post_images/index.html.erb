@@ -1,16 +1,8 @@
   <div class="center">
   <p>大会名</p>
   <p><%= @group.group_name %></p>
-  <p>参加ユーザー</p>
-  <% @group_users.each do |g| %>
-    <div class="row">
-      <div class="">
-      <%= image_tag g.image.to_s, class: "user_icon" %>
-      <p><%= g.name %></p>
-      </div>
-    </div>
-  <% end %>
   </div>
+
 
   <div class="center">
   <p>現時刻</p>
@@ -78,26 +70,41 @@
     </script>
   </div>
 
-  <div class="center">
-  <%= form_for(@p) do |f| %>
-  <%= f.label :fish_image %>
-  <%= f.file_field :fish_image %>
-  <p>魚種</p>
-  <%= f.text_field :fish_name, autofocus: true, placeholder:"魚種"%>
-  <p>数</p>
-  <%= f.text_field :count, autofocus: true %>
-  <p>大きさ</p>
-  <%= f.text_field :size, autofocus: true %><br>
-  <%= f.submit "投稿する", class: "btn btn-info" %>
-  <% end %>
 
-  <% @photos.each do |photo| %>
-  <%= image_tag photo.fish_image.to_s %>
-  <%= photo.fish_name %>
-  <%= link_to "Show", post_image_path(photo.id) %>
-  <%= link_to "Destroy", physical_deleted_path(photo.id), class:"btn-sm btn-danger", method: :post, data: { confirm: '本当に消しますか？' } %>
-  <% end %>
+<div class="image_modal">
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#sampleModal">
+    画像を投稿する
+  </button>
+
+  <!-- モーダル・ダイアログ -->
+  <div class="modal fade" id="sampleModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+          <h4 class="modal-title">画像投稿</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for(@p) do |f| %>
+          <%= f.label :fish_image %>
+          <%= f.file_field :fish_image %>
+          <p>魚種</p>
+          <%= f.text_field :fish_name, autofocus: true, placeholder:"魚種"%>
+          <p>数</p>
+          <%= f.text_field :count, autofocus: true %>
+          <p>大きさ</p>
+          <%= f.text_field :size, autofocus: true %><br>
+          <%= f.submit "投稿する", class: "btn btn-info" %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-primary">ボタン</button>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
 
 <%=ENV['Maps_JavaScript_API']%>
@@ -183,6 +190,25 @@ function codeAddress(){
 
 <script src= <%= ENV['Maps_JavaScript_URL']%> async defer></script>
 
+<div class="center">
+  <p>参加ユーザー</p>
+  <div class="row">
+    <% @group_users.each do |g| %>
+    <%= image_tag g.image.to_s, class: "user_thumbnail" %>
+    <!-- <p><%= g.name %></p> -->
+    <% end %>
+  </div>
+  <div class="row">
+    <% @photos.each do |photo| %>
+    <div class="col-xs-4">
+    <%= image_tag photo.fish_image.to_s, class: "fish_image" %><br>
+    <%= photo.fish_name %><br>
+    <%= link_to "詳細", post_image_path(photo.id), class:"btn-sm btn-info" %><br>
+    <%= link_to "削除", physical_deleted_path(photo.id), class:"btn-sm btn-danger", method: :post, data: { confirm: '本当に消しますか？' } %>
+    </div>
+    <% end %>
+  </div>
+</div>
 
 
 <%= link_to "大会を終了する", groups_path, class: "btn btn-default col-xs-12" %>
