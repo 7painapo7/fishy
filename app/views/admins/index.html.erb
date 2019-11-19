@@ -1,20 +1,23 @@
-管理者画面
-
-
+<h3>ユーザー一覧</h3>
 <!-- 検索窓 -->
   <div class="search_container">
 	<%= search_form_for @q do |f| %>
 
     <%= f.text_field :name_cont, placeholder: 'ユーザー名を入力...', class: "search-box" %>
     <i class="fa fa-search glyphicon glyphicon-search search-icon"><%= f.submit ("検索する"), id: "search-submit" %></i>
+
   <% end %>
   </div>
 
 
 
 <% @users.each do |user| %>
-<%= image_tag user.image.to_s %>
-<%= user.name %>
-<%= user.introduction %>
-<%= link_to "詳細", admin_path(user.id) %>
+	<div class="row">
+		<div class="col-xs-2">
+		<%= image_tag user.image.to_s, class: "user_icon" %>
+		</div>
+	<p><%= user.name %></p>
+	<p><%= user.introduction %></p>
+	<p><%= link_to "詳細", admin_path(user.id) %></p>
+	</div>
 <% end %>

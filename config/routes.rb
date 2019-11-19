@@ -1,6 +1,7 @@
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                                                                              Controller#Action
+#                      root GET    /                                                                                        users#fishy
 #        regulations_create GET    /regulations/create(.:format)                                                            regulations#create
 #       regulations_destroy GET    /regulations/destroy(.:format)                                                           regulations#destroy
 #         regulation_create GET    /regulation/create(.:format)                                                             regulation#create
@@ -73,6 +74,10 @@
 #
 
 Rails.application.routes.draw do
+
+
+  root :to => 'users#fishy'
+
 
   get 'regulations/create'
   get 'regulations/destroy'

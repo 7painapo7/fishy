@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:index, :update, :show, :edit, :destroy]
 	def index
 	#groupを作成する
 	@group = Group.new
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if current_user == @user
 			@user.update(user_params)
-			flash[:notice] = "You have updated user successfully."
+			flash[:notice] = "登録情報を更新しました。"
 			redirect_to user_path(@user.id)
 		else
 			render 'edit'
@@ -39,8 +39,11 @@ class UsersController < ApplicationController
 	def destroy
 	@user = User.find(params[:id])
 	@user.destroy
-	flash[:notice] = "You have destroyed user successfully."
-	admins_path
+	flash[:notice] = "登録情報を削除しました。"
+	users_path
+	end
+
+	def fishy
 	end
 
 	private

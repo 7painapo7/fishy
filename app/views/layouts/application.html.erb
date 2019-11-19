@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>Pf</title>
+  <meta charset="utf8">
+  <title>Fishy</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,52 +15,95 @@
 
 
 <body>
-  <header>
-    <div class="container">
-      <div id="slidemenu">
+  <div class="header" id="header">
+    <nav class="navbar navbar-main navbar-shadow" role="navigation" id="slide-nav">
+      <div class="container relative">
+        <div class="navbar-header">
+          <a class="navbar-logo" href="/">
+            <%= image_tag('logo72.png') %>
+          </a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="slidemenu sp-menu">
+          <ul class="nav navbar-nav navbar-right">
+            <% if admin_signed_in? %>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if admin_signed_in? %>
+            <li class="">
+              <%= link_to "新規登録", users_path %>
+            </li>
 
-          <li class="">
-            <!-- あとで変える -->
-            <%= link_to "ユーザ一覧", users_path %>
-          </li>
+            <li class="">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
 
-          <li class="">
-            <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
-          </li>
+            <% elsif user_signed_in? %>
 
-          <% elsif user_signed_in? %>
+            <li class="">
+              <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
+            </li>
 
-          <li class="">
-            <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
-          </li>
+             <li class="">
+              <%= link_to "過去の釣果一覧", histories_path%>
+            </li>
 
-          <li class="">
-            <!-- あとで変える -->
-            <%= link_to "ユーザ一覧", users_path %>
-          </li>
+            <li class="">
+              <!-- あとで変える -->
+              <%= link_to "ユーザ一覧", users_path %>
+            </li>
 
-          <li class="">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-          </li>
+            <li class="">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
 
-          <% else %>
+            <% else %>
 
-          <li class="">
-            <%= link_to "New user",  new_user_registration_path %>
-          </li>
+            <li class="">
+              <%= link_to "新規登録",  new_user_registration_path %>
+            </li>
 
-          <li class="">
-            <%= link_to "Log in", new_user_session_path %>
-          </li>
-          <% end %>
-        </ul>
+            <li class="">
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+            <% end %>
+          </ul>
+
+        <div id="hm-icon">
+          <a class="menu-trigger" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </div>
+
+        </div>
       </div>
+    </nav>
+  </div>
+  <div class="container center">
+    <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+    <% end %>
+
+    <%= yield %>
+
+  </div>
+
+
+  <footer class="footer style-2">
+    <div class="center">
+      <p class="no-margin" style="font-size: 11px;">
+        <br>
+
+      </p>
     </div>
-  </header>
-  <!-- /header -->
-  <%= yield %>
+  </footer>
+
+
+
 </body>
 </html>

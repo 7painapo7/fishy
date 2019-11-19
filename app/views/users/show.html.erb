@@ -1,20 +1,17 @@
-<div class="container">
-<% if flash[:notice] %>
-<div class="flash">
-<%= flash[:notice] %>
-</div>
-<% end %>
-</div>
+<div class="center">
+<h3>ユーザー情報</h3>
+<%= image_tag @user.image.to_s, class: "user_icon center" %><br>
+<%= @user.name %><br>
+<%= @user.introduction %><br>
+<%= link_to "プロフィールを編集", edit_user_path(@user),class: "btn btn-default"%><br>
 
-<h2>User info</h2>
-<%= image_tag @user.image.to_s %>
-<%= @user.name %>
-<%= @user.introduction %>
-<%= link_to "Edit", edit_user_path(@user) %>
-
-<% if @user.group_id == nil %>
-<%= form_for @group, url: groups_path, method: :post do |g| %>
-<%= g.text_field :group_name %>
-<%= g.submit 'グループ作成' %>
-<% end %>
-<% end %>
+	<% if @user.group_id == nil %>
+		<%= form_for @group, url: groups_path, method: :post do |g| %><br>
+		<%= g.text_field :group_name %><br>
+		<%= g.submit 'グループ作成',class: "btn btn-info" %><br>
+		<% end %>
+	<% else %>
+		<p>現在<%= Group.find(@user.group_id).group_name %>に参加しています</p>
+		<p><%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post %></p>
+	<% end %>
+</div>
