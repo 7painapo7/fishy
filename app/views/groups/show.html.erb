@@ -27,7 +27,6 @@
 	          <h4 class="modal-title">ルール決定</h4>
 	        </div>
 	        <div class="modal-body">
-			<p>ルール</p>
 			<%= form_for @regulation, url: regulations_path, method: :post do |f| %>
 			<p>勝敗</p><br>
 			<p><%= f.select :genre, [['大きさ勝負','size'],['数勝負','count']] %></p><br>

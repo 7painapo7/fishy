@@ -10,5 +10,8 @@
 	<%= g.text_field :group_name %><br>
 	<%= g.submit 'グループ作成',class: "btn btn-default active" %><br>
 	<% end %>
+<% else %>
+	<p>現在<%= Group.find(@user.group_id).group_name %>に参加しています</p>
+	<p><%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post %></p>
 <% end %>
 </div>

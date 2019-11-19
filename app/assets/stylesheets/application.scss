@@ -36,7 +36,8 @@ body {
 }
 
 .container {
-  // background-color: black;
+  position: relative;
+  background-color: #969696;
 }
 
 /*======== ヘッダー ========*/
@@ -221,7 +222,6 @@ body {
 	height: 150px;
 	border-radius: 50%;
 	border: 3px solid #05E8CC;
-  margin: 20px;
 }
 
 .user_thumbnail {
@@ -245,4 +245,192 @@ body {
 
 .fish_image {
   margin: 15px;
+}
+
+#user_search {
+  float: right;
+}
+
+.background_image {
+  background-image: url("background1.jpg"); 
+}
+
+
+
+
+
+
+
+
+
+
+/*======== 検索窓 ========*/
+
+.search_container {
+  float: right;
+  position: absolute;
+  top: 20px;
+  right: -40px;
+  z-index: 100;
+}
+
+/* line 4, searchbox.scss */
+body {
+// margin: 5%;
+}
+ 
+/* line 8, searchbox.scss */
+.search-box {
+transition: width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
+width: 40px;
+height: 40px;
+border-radius: 20px;
+border: none;
+cursor: pointer;
+background: #717171;
+}
+/* line 14, searchbox.scss */
+.search-box + label .search-icon {
+color: black;
+}
+/* line 15, searchbox.scss */
+.search-box:hover {
+color: white;
+background: #c8c8c8;
+box-shadow: 0 0 0 5px #3d4752;
+}
+/* line 19, searchbox.scss */
+.search-box:hover + label .search-icon {
+color: white;
+}
+/* line 21, searchbox.scss */
+.search-box:focus {
+transition: width 0.6s cubic-bezier(0, 1.22, 0.66, 1.39), border-radius 0.6s, background 0.6s;
+border: none;
+outline: none;
+box-shadow: none;
+padding-left: 15px;
+cursor: text;
+width: 300px;
+border-radius: auto;
+background: #ebebeb;
+color: black;
+}
+/* line 31, searchbox.scss */
+.search-box:focus + label .search-icon {
+color: black;
+}
+/* line 33, searchbox.scss */
+.search-box:not(:focus) {
+text-indent: -5000px;
+}
+ 
+/* line 36, searchbox.scss */
+#search-submit {
+position: relative;
+left: -5000px;
+}
+ 
+/* line 40, searchbox.scss */
+.search-icon {
+position: relative;
+left: -30px;
+color: white;
+cursor: pointer;
+}
+
+.favorite_font {
+  color: maroon;
+}
+
+.favorites_count {
+  color: black;
+}
+
+.fa-heart {
+  color: red;
+}
+
+.btn {
+  transition: color .3s, background.3s, box-shadow .3s, transform .3s;
+}
+
+.btm :active {
+  transition-duration: .1s;
+}
+
+.header_cart {
+  position: relative;
+}
+
+.carts-count {
+  background-color: red;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.index-cart {
+  background-color: red;
+  position: absolute;
+  right: 25%;
+  top: 10%;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.index_cart > a {
+  color: white;
+}
+
+.fav_list {
+  display: none;
+  margin-top: 10px;
+}
+
+.fav_cd_name {
+  color: blue !important;
+}
+
+#fav_button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.table_title {
+  margin: 10px 0;
+  padding: 0;
+}
+.scroll {
+    overflow-y: scroll;
+  height: 300px;
+}
+.table_head {
+  background-color: #dcdcdc;
+  height: 40px;
+
+}
+
+.table_body {
+  word-wrap: break-word;
+}
+.review_table {
+  width: 100%;
+  table-layout: fixed;
+}
+.review_td {
+  padding-bottom: 6px;
+}
+
+.margin-tb {
+  margin: 10px 0;
+}
+
+.review_btn {
+  height: 40px
 }

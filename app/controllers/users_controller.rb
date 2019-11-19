@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:index, :update, :show, :edit, :destroy]
 	def index
 	#groupを作成する
 	@group = Group.new
@@ -41,6 +41,9 @@ class UsersController < ApplicationController
 	@user.destroy
 	flash[:notice] = "You have destroyed user successfully."
 	users_path
+	end
+
+	def fishy
 	end
 
 	private
