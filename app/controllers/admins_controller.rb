@@ -16,7 +16,7 @@ class AdminsController < ApplicationController
 	def destroy
 	@user = User.find(params[:id])
 	@user.destroy
-	flash[:notice] = "ユーザーを削除しました。"
+	flash[:notice] = "You have destroyed user successfully."
 	redirect_to admins_path
 	end
 end

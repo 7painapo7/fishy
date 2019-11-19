@@ -10,7 +10,7 @@ class HistoriesController < ApplicationController
 	def destroy
 		@post_image = PostImage.only_deleted.find(params[:id])
 		@post_image.really_destroy!
-		flash[:notice] = "釣果を削除しました。"
+		flash[:notice] = "You have deleted history successfully."
 		redirect_to histories_path
 	end
 end

@@ -85,21 +85,21 @@ class GroupsController < ApplicationController
   	user = User.find(params[:id])
     user.group_id = current_user.group_id
     user.save
-    flash[:notice] = "グループに追加しました。"
+    flash[:notice] = "You have added to group successfully."
   end
 
   def sakujyo
     # グループ自体を削除
     User.where(group_id: params[:id]).update_all(group_id: nil)
     redirect_to user_path(current_user)
-    flash[:notice] = "グループを削除しました。"
+    flash[:notice] = "You have deleted group successfully."
   end
 
   def taisyutsu
     # グループを退出
     current_user.update_attributes(group_id: nil)
     redirect_to user_path(current_user)
-    flash[:notice] = "グループから退出しました。"
+    flash[:notice] = "You have leaved from group successfully."
   end
 
   def destroy

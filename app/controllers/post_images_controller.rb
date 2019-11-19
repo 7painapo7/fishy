@@ -37,7 +37,7 @@ class PostImagesController < ApplicationController
     def physical_deleted
     @post_image = PostImage.find(params[:id])
     @post_image.really_destroy!
-    flash[:notice] = "投稿画像を削除しました。"
+    flash[:notice] = "You have deleted image successfully."
     redirect_to post_images_path
     end
 
