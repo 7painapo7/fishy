@@ -1,7 +1,7 @@
 <div class="center">
-<p>大会名</p>
+<h3>大会名</h3>
 <p><%= @group.group_name %></p>
-<p>参加ユーザー</p>
+<h3>参加ユーザー</h3>
 	<div class="row">
 	<% @group_users.each do |g| %>
 	<%= image_tag g.image.to_s, class: "user_icon" %>
@@ -14,7 +14,7 @@
 
 
 <div class="row rule_modal">
-  <button type="button" class="btn btn-default btn-lg col-xs-12" data-toggle="modal" data-target="#sampleModal">
+  <button type="button" class="btn btn-info btn-lg col-xs-12" data-toggle="modal" data-target="#sampleModal">
     ルールを決める
   </button>
 
@@ -27,17 +27,19 @@
 	          <h4 class="modal-title">ルール決定</h4>
 	        </div>
 	        <div class="modal-body">
-			<%= form_for @regulation, url: regulations_path, method: :post do |f| %>
-			<p>勝敗</p><br>
-			<p><%= f.select :genre, [['大きさ勝負','size'],['数勝負','count']] %></p><br>
-			<p>罰ゲーム</p><br>
-			<p><%= f.text_field :punishment, :placeholder => "内容"%></p><br>
-			<!-- カレンダー -->
-			<p class="control-label" for="">終了予定日時</p><br>
-			<p><%= f.datetime_select :end_time, {} %></p><br>
-			<%= f.submit '大会を始める', class: "col-xs-12 btn btn-default" %><br>
-			<% end %>
-	      </div>
+				<%= form_for @regulation, url: regulations_path, method: :post do |f| %>
+				<p>勝敗</p><br>
+				<p><%= f.select :genre, [['大きさ勝負','size'],['数勝負','count']] %></p><br>
+				<p>罰ゲーム</p><br>
+				<p><%= f.text_field :punishment, :placeholder => "内容"%></p><br>
+				<!-- カレンダー -->
+				<p class="control-label" for="">終了予定日時</p><br>
+				<p><%= f.datetime_select :end_time, {} %></p><br>
+				<div class="modal-footer">
+				<%= f.submit '大会を始める', class: "col-xs-12 btn btn-info" %><br>
+				<% end %>
+				</div>
+	        </div>
 	    </div>
 	  </div>
 	</div>

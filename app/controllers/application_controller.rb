@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 # ログアウト後に遷移するpathを設定
   def after_sign_out_path_for(resource)
-    new_user_session_path
+    root_path
   end
 
 # sign_up時のnameの使用を許可

@@ -35,9 +35,13 @@ body {
   background-color: #FAFAFA;
 }
 
+p {
+  font-family: "Helvetica Neue","Hiragino Kaku Gothic ProN",YuGothic,"Yu Gothic",Verdana,Meiryo,sans-serif;
+}
+
 .container {
   position: relative;
-  background-color: #969696;
+  // background-color: #969696;
 }
 
 /*======== ヘッダー ========*/
@@ -251,9 +255,6 @@ body {
   float: right;
 }
 
-.background_image {
-  background-image: url("background1.jpg"); 
-}
 
 
 

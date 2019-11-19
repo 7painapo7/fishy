@@ -30,14 +30,14 @@ class PostImagesController < ApplicationController
     @group_users = User.where(group_id: current_user.group_id)
     @photos = PostImage.where(user_id: @group_users)
     @photos.destroy_all
-    redirect_to users_path
+    redirect_to histories_path
     end
 
     # 物理削除
     def physical_deleted
     @post_image = PostImage.find(params[:id])
     @post_image.really_destroy!
-    flash[:notice] = "You have destroyed fishimage successfully."
+    flash[:notice] = "投稿画像を削除しました。"
     redirect_to post_images_path
     end
 

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if current_user == @user
 			@user.update(user_params)
-			flash[:notice] = "You have updated user successfully."
+			flash[:notice] = "登録情報を更新しました。"
 			redirect_to user_path(@user.id)
 		else
 			render 'edit'
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 	def destroy
 	@user = User.find(params[:id])
 	@user.destroy
-	flash[:notice] = "You have destroyed user successfully."
+	flash[:notice] = "登録情報を削除しました。"
 	users_path
 	end
 

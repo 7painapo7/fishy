@@ -1,7 +1,7 @@
-<p>過去のあなたの釣果一覧</p>
+<h3>過去のあなたの釣果</h3>
 <% @photos.each do |p| %>
 	<%= link_to history_path(p.id) do %>
-	<%= image_tag p.fish_image.to_s, class: "fish_image" %>
+	<%= image_tag p.fish_image.to_s, class: "fish_image img_wrap" %>
 	<% end %>
 <% end %>
 

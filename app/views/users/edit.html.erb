@@ -7,7 +7,7 @@
 <%= f.text_field :name, autofocus: true, placeholder:"名前"%><br>
 <%= f.label :introduction %><br>
 <%= f.text_field :introduction, autofocus: true %><br>
-<%= f.submit "更新", class: "btn btn-default active" %><br>
+<%= f.submit "更新", class: "btn btn-default" %><br>
 <% end %>
 
 <%= link_to "削除", user_path(@user.id), method: :delete,data: { confirm: '本当に消しますか？' } %>
