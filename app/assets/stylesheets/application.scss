@@ -31,6 +31,193 @@ li {
 　list-style: none;
 }
 
+.container {
+  background-color: #fff;
+}
+/*======== ヘッダー ========*/
+.header {
+  position: relative;
+}
+.header .navbar-header {
+  padding: 0;
+}
+.navbar-main {
+  margin: 0;
+  background-color: #ffffff;
+  border: 0;
+  border-bottom: 0 solid transparent;
+  border-radius: 0;
+  z-index: 1000;
+}
+.navbar-main.navbar-main-inverse {
+  background-color: #232323;
+}
+.navbar-logo img{
+  margin-top: 10px;
+}
+.navbar-main.navbar-shadow {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-main .container {
+    width: 100%;
+  }
+}
+/* NAVBAR */
+.navbar-main .navbar-text {
+  color: #333333;
+}
+.navbar-main .navbar-nav a {
+  outline: 0;
+}
+.navbar-main .navbar-nav > li > a {
+  color: #333333;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  padding: 16px 30px 16px 20px;
+  margin: 15px 0;
+  font-weight: 500;
+  background-color: transparent;
+  text-transform: capitalize;
+  border-radius: 0;
+}
+.navbar-main .navbar-nav > li > a.dropdown-toggle > span:before {
+  content: "\f123";
+  font-family: "Ionicons";
+  position: absolute;
+  right: 16px;
+  font-size: 8px;
+}
+
+
+/*======== hm ========*/
+#hm-icon{
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
+}
+
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+.menu-trigger {
+  position: relative;
+  width: 50px;
+  height: 44px;
+}
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  /*ここで色を指定*/
+  background-color: #000;
+  border-radius: 4px;
+}
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+.menu-trigger span:nth-of-type(2) {
+  top: 20px;
+}
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+
+/*クリック後のスタイルとしてCSSに下記を記述*/
+/*.menu-trigger.active {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.menu-trigger.active span:nth-of-type(1) {
+  -webkit-transform: translateY(20px) rotate(-45deg);
+  transform: translateY(20px) rotate(-45deg);
+  background-color: white;
+}
+.menu-trigger.active span:nth-of-type(2) {
+  -webkit-transform: translateY(0) rotate(45deg);
+  transform: translateY(0) rotate(45deg);
+  background-color: white;
+}
+.menu-trigger.active span:nth-of-type(3) {
+  opacity: 0;
+}*/
+
+
+/*クリック後のスタイルとしてCSSに下記を記述*/
+.menu-trigger.active span:nth-of-type(1) {
+  -webkit-transform: translateY(20px) rotate(-45deg);
+  transform: translateY(20px) rotate(-45deg);
+  /*ここで色を指定*/
+  background-color: white;
+}
+.menu-trigger.active span:nth-of-type(2) {
+  left: 200%;
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  -webkit-animation: active-menu-bar02 .8s forwards;
+  animation: active-menu-bar02 .8s forwards;
+}
+@-webkit-keyframes active-menu-bar02 {
+  100% {
+    height: 0;
+  }
+}
+@keyframes active-menu-bar02 {
+  100% {
+    height: 0;
+  }
+}
+.menu-trigger.active span:nth-of-type(3) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg);
+  /*ここで色を指定*/
+  background-color: white;
+}
+
+
+#sp-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  min-height: 100%;
+  display: none;
+  /*上に来るようにしている？*/
+  z-index: 9;
+}
+ 
+#sp-menu li{
+  text-align: center;
+  margin: 30px;
+  list-style: none;
+}
+ 
+#sp-menu a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/*======== etc ========*/
+
+
+
+
+
+
+
 .user_icon {
 	height: 150px;
 	border-radius: 50%;
