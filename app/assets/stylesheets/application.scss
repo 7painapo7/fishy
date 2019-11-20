@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 #hm-icon{
   position: fixed;
   right: 20px;
-  top: 14px;
+  top: 13px;
   z-index: 10;
 }
 
@@ -496,10 +496,40 @@ cursor: pointer;
 }
 
 .jumbotron h1, p {
-  color: #04E9C9;
-  margin: 50px 0;
+  color: #333;
 }
 
 .space {
   height: 30px;
+}
+
+.modal-title {
+  color: #232931;
+}
+
+.modal-header, .modal-body {
+  background-color: #EEE;
+}
+
+.countdown {
+  color: #04E9C9;
+}
+
+.fishy {
+  margin-top: 80px;
+}
+
+
+
+
+
+
+
+
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {  
+.social i {
+    color: blue;
+    }
 }
