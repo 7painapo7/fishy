@@ -14,13 +14,14 @@
 
 
 
+
 <body>
   <div class="header" id="header">
     <nav class="navbar navbar-main navbar-shadow" role="navigation" id="slide-nav">
       <div class="container relative">
         <div class="navbar-header">
           <a class="navbar-logo" href="/">
-            <%= image_tag('logo82.png') %>
+            <%= image_tag('logo.png') %>
           </a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -29,67 +30,76 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-        <div id="slidemenu sp-menu">
-          <ul class="nav navbar-nav navbar-right">
-            <% if admin_signed_in? %>
 
-            <li class="">
-              <%= link_to "新規登録", users_path %>
-            </li>
 
-            <li class="">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-            </li>
+<div id="sp-menu">
+    <h2></h2>
+<% if admin_signed_in? %>
+    <li class="">
+      <%= link_to "新規登録", users_path %>
+    </li>
 
-            <% elsif user_signed_in? %>
+    <li class="">
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+    </li>
 
-            <li class="">
-              <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
-            </li>
+    <% elsif user_signed_in? %>
 
-             <li class="">
-              <%= link_to "過去の釣果一覧", histories_path%>
-            </li>
+    <li class="">
+      <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
+    </li>
 
-            <li class="">
-              <!-- あとで変える -->
-              <%= link_to "ユーザ一覧", users_path %>
-            </li>
+     <li class="">
+      <%= link_to "過去の釣果一覧", histories_path%>
+    </li>
 
-            <li class="">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-            </li>
+    <li class="">
+      <!-- あとで変える -->
+      <%= link_to "ユーザ一覧", users_path %>
+    </li>
 
-            <% else %>
+    <li class="">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </li>
 
-            <li class="">
-              <%= link_to "新規登録",  new_user_registration_path %>
-            </li>
+    <% else %>
 
-            <li class="">
-              <%= link_to "ログイン", new_user_session_path %>
-            </li>
-            <% end %>
-          </ul>
+    <li class="">
+      <%= link_to "新規登録",  new_user_registration_path %>
+    </li>
 
-        <div id="hm-icon">
-          <a class="menu-trigger" href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-          </a>
-        </div>
+    <li class="">
+      <%= link_to "ログイン", new_user_session_path %>
+    </li>
+    <% end %>
+  </ul>
+</div>
 
-        </div>
+  <div id="hm-icon">
+    <a class="menu-trigger" href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+  </div>
+
+
       </div>
     </nav>
   </div>
-  <div class="container center">
+  <div class="container">
+    <div class="center">
+    <!-- 消すな -->
+    <p></p>
+    <!-- 消すな -->
+    <p>
     <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
+    <%= flash[:notice] %>
     <% end %>
-
+    </p>
     <%= yield %>
+    </div>
+
 
   </div>
 
@@ -102,8 +112,6 @@
       </p>
     </div>
   </footer>
-
-
 
 </body>
 </html>

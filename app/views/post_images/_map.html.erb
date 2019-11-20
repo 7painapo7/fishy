@@ -1,20 +1,15 @@
 <!-- ここでは写真が投稿された位置だけマーカーを表示させる -->
 
 <%=ENV['Maps_JavaScript_API']%>
-
+<div class='map'>
 <!-- 地名入力用のinputを追加 -->
-<input id="address" type="textbox" value="DMM WEBCAMP 難波">
+<input id="address" type="textbox" value="DMM WEBCAMP 難波" >
 
 <!-- buttonをクリックしたらcodeAddressを実行　-->
 <input type="button" value="Encode" onclick="codeAddress()">
 <div id='map'>
 </div>
-
-<style>
-#map{
-  height: 600px;
-}
-</style>
+</div>
 
 
 <script>
