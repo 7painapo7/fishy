@@ -1,14 +1,23 @@
 <div class="center">
-<h3>優勝は</h3>
+<h3>優勝者</h3>
 <% if @n == 0 %>
-<% @winners.each do |w| %>
-<p><%= w.user.name %>です</p>
-<%= image_tag w.user.image.to_s, class: "user_icon" %>
-<% end %>
+	<% if @winner == nil %>
+	<p>誰も釣らなかったので引き分けです</p>
+	<% else %>
+		<% @winners.each do |w| %>
+		<p><%= w.user.name %>です</p>
+		<%= image_tag w.user.image.to_s, class: "user_icon" %>
+		<% end %>
+	<% end %>
 <% else%>
-<% @fff.each do |w| %>
-<p><%= User.find(w).name %>です</p>
-<% end %>
+
+	<% if @fff == [] %>
+	<p>誰も釣らなかったので引き分けです</p>
+	<% else %>
+		<% @fff.each do |w| %>
+		<p><%= User.find(w).name %>です</p>
+		<% end %>
+	<% end %>
 <% end %>
 
 <h3>罰ゲームは</h3>
