@@ -3,13 +3,16 @@ class PostImagesController < ApplicationController
     def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
-    # if @post_image.latitude == nil
-    # flash[:notice] = "Cannot save because there is no location information."
-    # else
+
+
     @post_image.latitude = EXIFR::JPEG::new(@post_image.fish_image.file.file).gps.latitude
     @post_image.longitude = EXIFR::JPEG::new(@post_image.fish_image.file.file).gps.longitude
+
+    if @post_image.latitude || @post_image.longitude == nil
+    flash[:notice] = "Cannot save because there is no location information."
+    else
     @post_image.save
-    # end
+    end
     redirect_to post_images_path
 
     end
