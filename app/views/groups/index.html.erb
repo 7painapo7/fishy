@@ -5,8 +5,8 @@
 	<p>誰も釣らなかったので引き分けです</p>
 	<% else %>
 		<% @winners.each do |w| %>
-		<p><%= w.user.name %>です</p>
 		<%= image_tag w.user.image.to_s, class: "user_icon" %>
+		<p><%= w.user.name %></p>
 		<% end %>
 	<% end %>
 <% else%>
@@ -15,7 +15,8 @@
 	<p>誰も釣らなかったので引き分けです</p>
 	<% else %>
 		<% @fff.each do |w| %>
-		<p><%= User.find(w).name %>です</p>
+		<%= image_tag User.find(w).image.to_s, class: "user_icon" %>
+		<p><%= User.find(w).name %></p>
 		<% end %>
 	<% end %>
 <% end %>
@@ -23,13 +24,44 @@
 <h3>罰ゲームは</h3>
 <p><%= @regulation.punishment %>です</p>
 
+
+
+
 <h3>参加ユーザー</h3>
-<div class="row">
-<% @group_users.each do |g| %>
-<%= image_tag g.image.to_s, class: "user_icon" %>
-<!-- <p><%= g.name %></p> -->
-<% end %>
+<div id="sampleCarousel" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner" role="listbox">
+
+		<div class="item active">
+		<%= image_tag @group_users.first.image.to_s, class: "user_icon" %>
+		</div>
+		<!-- 2番目以降を取り出したい -->
+		<% @a.each do |g| %>
+		<div class="item">
+		<%= image_tag g.image.to_s, class: "user_icon" %>
+		</div>
+		<% end %>
+
+	</div>
+	<a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">前へ</span>
+	</a>
+	<a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">次へ</span>
+	</a>
+</div>
+
+
+
 </div>
 </div>
 
 <%= link_to "大会を終了する", post_image_path(@photos), method: :delete, class: "btn btn-info col-xs-12", data: { confirm: 'グループのデータは削除されます。よろしいですか？' } %>
+
+
+
+<!-- <%= image_tag @group_users.first.image.to_s, class: "user_icon" %> -->
+
+
+
