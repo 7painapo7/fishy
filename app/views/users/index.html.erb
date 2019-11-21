@@ -1,44 +1,44 @@
 <!-- 検索窓 -->
-  <div class="row search_container">
+<div class="row search_container">
 	<%= search_form_for @q do |f| %>
 
-    <%= f.text_field :name_cont, placeholder: 'ユーザー名を入力...', class: "search-box" %>
-    <i class="fa fa-search glyphicon glyphicon-search search-icon"><%= f.submit ("検索する"), id: "search-submit"%></i>
-  <% end %>
-  </div>
+		<%= f.text_field :name_cont, placeholder: 'ユーザー名を入力...', class: "search-box" %>
+		<i class="fa fa-search glyphicon glyphicon-search search-icon"><%= f.submit ("検索する"), id: "search-submit"%></i>
+	<% end %>
+</div>
 
 
 <% @users.each do |user| %>
 	<div class="user_row row">
 		<div class="col-lg-3">
-		<%= image_tag user.image.to_s, class: "user_icon" %>
+			<%= image_tag user.image.to_s, class: "user_icon" %>
 		</div>
 		<div class="col-lg-3">
-		<p><span><%= user.name %></span></p>
+			<p><span><%= user.name %></span></p>
 		</div>
 		<div class="col-lg-3">
-		<p><span><%= user.introduction %></span></p>
+			<p><span><%= user.introduction %></span></p>
 		</div>
 		<% if user.group_id == nil %>
-			<div class="col-lg-3">
+		<div class="col-lg-3">
 			<%= form_for user, url: group_path(user.id), method: :PATCH do |c| %>
 			<p><%= c.submit 'グループに招待', class: "btn btn-info" %></p>
 			<% end %>
-			</div>
+		</div>
 		<% else %>
-			<div class="col-lg-3">
+		<div class="col-lg-3">
 			<p><span>グループに参加中</span></p>
-			</div>
+		</div>
 		<% end %>
 	</div>
 <% end %>
 
-<div class="row">
-<% if current_user.group_id == nil %>
-<%= link_to "大会を始める", user_path(current_user), class: "btn btn-default col-xs-12" %>
-<% else %>
-<%= link_to "ルールを設定する", group_path(current_user), class: "btn btn-info col-xs-12" %>
-<% end %>
+<div class="btn-row row">
+	<% if current_user.group_id == nil %>
+		<%= link_to "大会を始める", user_path(current_user), class: "btn btn-default col-xs-12" %>
+	<% else %>
+		<%= link_to "ルールを設定する", group_path(current_user), class: "btn btn-info col-xs-12" %>
+	<% end %>
 </div>
 
 <div class="space_72">

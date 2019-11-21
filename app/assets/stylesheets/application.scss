@@ -148,7 +148,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .footer {
   height: 72px;
-  width: 100%;
+  width: 100vw;
   background-color: #2D3136;
   position: fixed;
   bottom: 0; /*下に固定*/
@@ -163,7 +163,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /*======== hm ========*/
 #hm-icon{
   position: fixed;
-  right: 30px;
+  left: 95vw;
   top: 18px;
   z-index: 10;
 }
@@ -226,7 +226,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   background-color: #EEE;
 }
 .menu-trigger.active span:nth-of-type(2) {
-  left: 200%;
+  left: 0;
   opacity: 0;
   -webkit-transform: translateY(10px);
   transform: translateY(10px);
@@ -257,7 +257,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   left: 0;
   background: #2D3136;
   color: #EEE;
-  width: 100%;
+  width: 100vw;
   min-height: 100%;
   display: none;
   /*上に来るようにしている？*/
@@ -541,6 +541,7 @@ cursor: pointer;
 
 .space_72 {
   height: 72px;
+  position: relative
 }
 
 .space_110 {
@@ -586,24 +587,54 @@ input {
 #user_image {
   color: #EEE;
 }
+.btn-row {
+  margin: 0 0 20px;
+}
+.navbar-toggle {
+  float: none;
+}
+body {
+  overflow-x: hidden;
+}
 
 
+
+
+
+
+
+
+@media screen and (max-width:768px) {
+  #hm-icon {
+    left: 90vw;
+  }
+  .search_container {
+    display: none;
+  }
+  .container > .navbar-header {
+    margin: 0;
+  }
+}
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
+  #hm-icon {
+    left: 85vw;
+  }
 
-.user_icon {
-  height: 150px;
-  border-radius: 50%;
-  border: 3px solid #04E9C9;
-}
+  .user_icon {
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #04E9C9;
+  }
 
-.user_row {
-  margin: 10px 0;
-  line-height: 0;
-}
+  .user_row {
+    margin: 10px 0;
+    line-height: 0;
+  }
 
-.map {
-  display: none;
-}
+  .map {
+    display: none;
+  }
+
 
 }
