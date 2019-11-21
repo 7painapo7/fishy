@@ -1,17 +1,21 @@
 <div class="center">
+
+
+
 <h3>ユーザー情報</h3>
 <%= image_tag @user.image.to_s, class: "user_icon center" %><br>
-<%= @user.name %><br>
-<%= @user.introduction %><br>
-<%= link_to "プロフィールを編集", edit_user_path(@user),class: "btn btn-default"%><br>
+<p><%= @user.name %></p><br>
+<p><%= link_to "プロフィール編集", edit_user_path(@user),class: "btn btn-default"%></p><br>
 
 	<% if @user.group_id == nil %>
 		<%= form_for @group, url: groups_path, method: :post do |g| %><br>
-		<%= g.text_field :group_name %><br>
-		<%= g.submit 'グループ作成',class: "btn btn-info" %><br>
+		<div class= "field form-group col-lg-4 col-lg-offset-4">
+		<%= g.text_field :group_name, placeholder: 'グループ名 *',class: "form-control" %><br>
+		</div>
+		<%= g.submit 'グループ作成',class: "btn btn-info field form-group col-lg-4 col-lg-offset-4 col-xs-12" %><br>
 		<% end %>
 	<% else %>
-		<p>現在<%= Group.find(@user.group_id).group_name %>に参加しています</p>
-		<p><%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post %></p>
+		<p><span>現在<%= Group.find(@user.group_id).group_name %>に参加しています</span></p>
+		<p><%= link_to 'グループ退出',taisyutsu_path(current_user.group_id), method: :post %></p>
 	<% end %>
 </div>

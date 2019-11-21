@@ -49,13 +49,12 @@
       <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
     </li>
 
-     <li class="">
-      <%= link_to "過去の釣果一覧", histories_path%>
+    <li class="">
+      <%= link_to "ユーザ一覧", users_path %>
     </li>
 
-    <li class="">
-      <!-- あとで変える -->
-      <%= link_to "ユーザ一覧", users_path %>
+     <li class="">
+      <%= link_to "過去の釣果一覧", histories_path%>
     </li>
 
     <li class="">
@@ -87,16 +86,16 @@
       </div>
     </nav>
   </div>
-  <div class="container">
+  <div class="container wrapper">
     <div class="center">
     <!-- 消すな -->
     <p></p>
     <!-- 消すな -->
-    <p>
+    <p><span>
     <% if flash[:notice] %>
     <%= flash[:notice] %>
     <% end %>
-    </p>
+    </span></p>
     <%= yield %>
     </div>
 
@@ -106,7 +105,7 @@
 
   <footer class="footer style-2">
     <div class="center">
-      <p class="copyright">201909</p>
+      <p class="copyright"></p>
     </div>
   </footer>
 

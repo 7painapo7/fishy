@@ -1,10 +1,10 @@
 <div class="center">
 <h3>大会名</h3>
-<p><%= @group.group_name %></p>
+<p><span><%= @group.group_name %></span></p>
 <h3>参加ユーザー</h3>
 	<div class="row">
 	<% @group_users.each do |g| %>
-	<%= image_tag g.image.to_s, class: "user_icon" %>
+	<%= image_tag g.image.to_s, class: "user_icon group_users" %>
 	<!-- <p><%= g.name %></p> -->
 	<% end %>
 	</div>
@@ -14,8 +14,8 @@
 
 
 <div class="row rule_modal">
-  <button type="button" class="btn btn-info btn-lg col-xs-12" data-toggle="modal" data-target="#sampleModal">
-    ルールを決める
+  <button type="button" class="btn btn-info col-lg-4 col-lg-offset-4 col-xs-12" data-toggle="modal" data-target="#sampleModal">
+    ルールを決定
   </button>
 
   <!-- モーダル・ダイアログ -->
@@ -24,7 +24,7 @@
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-	          <h4 class="modal-title">ルール決定</h4>
+	          <h4 class="modal-title">ルール設定</h4>
 	        </div>
 	        <div class="modal-body">
 				<%= form_for @regulation, url: regulations_path, method: :post do |f| %>
@@ -52,6 +52,6 @@
 
 
 <div class="row center">
-<p><%= link_to 'グループを削除',sakujyo_path(current_user.group_id), method: :post %></p>
-<p><%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post %></p>
+<p class="link"><%= link_to 'グループを削除',sakujyo_path(current_user.group_id), method: :post %></p>
+<p class="link"><%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post %></p>
 </div>
