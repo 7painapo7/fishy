@@ -1,8 +1,4 @@
-<h3>投稿の詳細</h3>
-<%= image_tag @post_image.fish_image.to_s %>
-<%= @post_image.fish_name %>
-<%= @post_image.count %>
-<%= @post_image.size %>
-
-
+<%= render 'post_images/image', post_image: @post_image %>
+<div class="col-xs-12">
 <%= render 'post_images/map', post_image: @post_image %>
+</div>

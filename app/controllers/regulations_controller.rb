@@ -5,7 +5,7 @@ class RegulationsController < ApplicationController
      @regulation.group_id = current_user.group.id
      # binding.pry
      @regulation.save
-     flash[:notice] = "スタート。"
+     flash[:notice] = "Start!!!"
      redirect_to post_images_path
   end
 

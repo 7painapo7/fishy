@@ -4,11 +4,15 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
 
+    if EXIFR::JPEG::new(@post_image.fish_image.file.file).gps == nil
+    flash[:notice] = "Cannot save because there is no location information."
+    else
     @post_image.latitude = EXIFR::JPEG::new(@post_image.fish_image.file.file).gps.latitude
     @post_image.longitude = EXIFR::JPEG::new(@post_image.fish_image.file.file).gps.longitude
-
     @post_image.save
+    end
     redirect_to post_images_path
+
     end
 
     def index
@@ -37,7 +41,7 @@ class PostImagesController < ApplicationController
     def physical_deleted
     @post_image = PostImage.find(params[:id])
     @post_image.really_destroy!
-    flash[:notice] = "投稿画像を削除しました。"
+    flash[:notice] = "You have deleted image successfully."
     redirect_to post_images_path
     end
 

@@ -1,8 +1,6 @@
 <div class="center">
   <h3>ログイン</h3><br>
 
-  <%= image_tag('logo150.png') %>
-
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field col-xs-4 col-xs-offset-4">
       <%= f.label :email %><br />

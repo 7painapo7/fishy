@@ -1,11 +1,3 @@
-<h3>過去の釣果詳細</h3>
-<div class="image">
-<%= image_tag @post_image.fish_image.to_s, class: "fish_image" %><br>
-</div>
-<%= @post_image.fish_name %><br>
-<%= @post_image.count %><br>
-<%= @post_image.size %><br>
-
+<%= render 'post_images/image', post_image: @post_image %>
 <%= link_to "削除", history_path(@post_image.id), class:"btn-sm btn-danger", method: :delete, data: { confirm: '本当に消しますか？' } %>
-
 <%= render 'post_images/map', post_image: @post_image %>
