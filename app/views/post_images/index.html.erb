@@ -30,8 +30,8 @@
           let sec = target_unix-now_unix;
           let cd_text = '';
           if (sec == 0) {
-            alert('終了です!');
-            // window.location.href = '/groups'
+            alert('終了です!大会を終了します！');
+            window.location.href = '/groups'
             return false;
           }
           if(sec>=86400){
@@ -86,7 +86,7 @@
           <%= f.label :fish_image %>
           <%= f.file_field :fish_image %>
           <p>魚種<br><%= f.text_field :fish_name, autofocus: true, placeholder:"魚種"%></p>
-          <p>数<br><%= f.text_field :count, autofocus: true, placeholder:"匹数" %></p>
+          <p>数<br><%= f.text_field :count, autofocus: true, placeholder:"匹数" ,value: 1 %></p>
           <p>大きさ<br><%= f.text_field :size, autofocus: true, placeholder:"センチ" %>
           </p><br>
 

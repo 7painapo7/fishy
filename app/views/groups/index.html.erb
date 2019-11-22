@@ -21,17 +21,14 @@
 	<% end %>
 <% end %>
 
-<h3>罰ゲームは</h3>
-<p><span><%= @regulation.punishment %>です</span></p>
+<p><span>罰ゲームは<%= @regulation.punishment %>です</span></p>
 
 
 
 
 
 
-
-
-<h3>参加ユーザー</h3>
+<p><span>参加ユーザー</span></p>
 
 <% @group_users.each do |g| %>
 <%= image_tag g.image.to_s, class: "user_icon" %>
@@ -42,12 +39,13 @@
 </div>
 </div>
 
-
-<div class="space_72">
+<div class="space_50">
 </div>
 
 
+
 <%= link_to "大会を終了する", post_image_path(@photos), method: :delete, class: "btn btn-info col-xs-12", data: { confirm: 'グループのデータは削除されます。よろしいですか？' } %>
+
 
 
 

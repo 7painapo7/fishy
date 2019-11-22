@@ -16,3 +16,10 @@
 
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+$(function() {
+      $('#btn').click(function(){
+            $.console.log(aaa);
+      });
+});

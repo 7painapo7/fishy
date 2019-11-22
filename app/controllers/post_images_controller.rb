@@ -16,8 +16,8 @@ class PostImagesController < ApplicationController
     end
 
     def index
-        # グループidを持たない場合は行けない
-        if current_user.group_id == nil
+        # グループidを持たない場合orルールが決まってない場合は行けない
+        if current_user.group_id == nil || Regulation.find_by(group_id:current_user.group_id) == nil
         redirect_to users_path
         else
         @p = PostImage.new

@@ -6,28 +6,42 @@
 		<i class="fa fa-search glyphicon glyphicon-search search-icon"><%= f.submit ("検索する"), id: "search-submit"%></i>
 	<% end %>
 </div>
+<div class="row user_row head_row">
+		<div class="col-lg-2 col-lg-offset-1">
+			<h5><span></span></h5>
+		</div>
+		<div class="col-lg-2">
+			<h5><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span>user</span></h5>
+		</div>
+		<div class="col-lg-4">
+			<h5><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <span>introduction</span></h5>
+		</div>
+		<div class="col-lg-2">
+			<h5><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span>status</span></h5>
+		</div>
+</div>
 
 
 <% @users.each do |user| %>
-	<div class="user_row row">
-		<div class="col-lg-3">
+	<div class="row user_row">
+		<div class="col-lg-2 col-lg-offset-1">
 			<%= image_tag user.image.to_s, class: "user_icon" %>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-2">
 			<p><span><%= user.name %></span></p>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-4">
 			<p><span><%= user.introduction %></span></p>
 		</div>
 		<% if user.group_id == nil %>
-		<div class="col-lg-3">
+		<div class="col-lg-2">
 			<%= form_for user, url: group_path(user.id), method: :PATCH do |c| %>
-			<p><%= c.submit 'グループに招待', class: "btn btn-info" %></p>
+			<p><%= c.submit 'グループに招待', class: "btn btn-info", id:"btn"%></p>
 			<% end %>
 		</div>
 		<% else %>
-		<div class="col-lg-3">
-			<p><span>グループに参加中</span></p>
+		<div class="col-lg-2">
+			<p><span id="add">グループに参加中</span></p>
 		</div>
 		<% end %>
 	</div>

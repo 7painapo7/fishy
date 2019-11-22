@@ -154,7 +154,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   bottom: 0; /*下に固定*/
 }
 
+.footer_text {
+  line-height: 68px;
+}
 
+.copyright > span {
+  color: #717171;
+}
 
 
 
@@ -603,7 +609,6 @@ body {
 
 
 
-
 @media screen and (max-width:768px) {
   #hm-icon {
     left: 90vw;
@@ -613,6 +618,9 @@ body {
   }
   .container > .navbar-header {
     margin: 0;
+  }
+  .row.head_row {
+    display: none;
   }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
