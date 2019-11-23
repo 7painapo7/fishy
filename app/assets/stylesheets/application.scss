@@ -459,10 +459,15 @@ cursor: pointer;
 .review_btn {
   height: 40px
 }
-
-
-
-
+.histories_container {
+  margin: 0  110px;
+}
+.history {
+  float: left;
+}
+.black_container {
+  background-color: #2B2D2E;
+}
 
 
 
@@ -476,6 +481,7 @@ cursor: pointer;
   height: 150px;
   border-radius: 50%;
   border: 3px solid #04E9C9;
+  margin: 20px;
 }
 
 .user_thumbnail {
@@ -630,6 +636,11 @@ body {
   .col-xs-6 {
     padding: 0;
   }
+  .user_icon {
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #04E9C9;
+  }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
@@ -637,11 +648,6 @@ body {
     left: 85vw;
   }
 
-  .user_icon {
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid #04E9C9;
-  }
 
   .user_row {
     margin: 10px 0;

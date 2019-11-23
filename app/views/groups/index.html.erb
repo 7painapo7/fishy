@@ -28,12 +28,15 @@
 
 
 
-<p><span>参加ユーザー</span></p>
+<h3>参加ユーザー</h3>
 
 <% @group_users.each do |g| %>
 <%= image_tag g.image.to_s, class: "user_icon" %>
 <% end %>
 
+<div class="space_50">
+	
+</div>
 
 
 </div>
@@ -44,6 +47,9 @@
 
 <%= link_to "大会を終了する", post_image_path(@photos), method: :delete, class: "btn btn-info col-xs-12", data: { confirm: 'グループのデータは削除されます。よろしいですか？' } %>
 
+<div class="space_110">
+	
+</div>
 
 
 

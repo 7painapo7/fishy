@@ -1,11 +1,49 @@
 <h3>過去のあなたの釣果</h3>
+
 <% @photos.each do |p| %>
+<div class="col-lg-3">
 	<%= link_to history_path(p.id) do %>
 	<%= image_tag p.fish_image.to_s, class: "fish_image img_wrap" %>
-	<% end %>
+	<% end %><br>
+
+		<div class="table-responsive col-lg-10 col-lg-offset-1">
+			<table class="table">
+				<thead>
+				</thead>
+				<tbody>
+					<tr>
+						<th>魚種</th>
+						<td><%= p.fish_name %></td>
+					</tr>
+					<tr>
+						<th>数</th>
+						<td><%= p.count %>匹</td>
+					</tr>
+					<tr>
+						<th>大きさ</th>
+						<td><%= p.size %>センチ</td>
+					</tr>
+					<tr>
+						<th>日時</th>
+						<td><%= p.created_at %></td>
+					</tr>
+					<tr>
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+
+</div>
 <% end %>
 
-<div class="space_72">
+
+
+
+
+<div class="space_110">
 	
 </div>
 
