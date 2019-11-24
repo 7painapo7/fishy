@@ -2,7 +2,7 @@
 
 
 
-<h3>ユーザー情報</h3>
+<div class="title">USER INFO</div>
 <%= image_tag @user.image.to_s, class: "user_icon center" %><br>
 <p><%= @user.name %></p><br>
 <p><%= link_to "プロフィール編集", edit_user_path(@user),class: "btn btn-default"%></p><br>

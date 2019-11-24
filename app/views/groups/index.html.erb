@@ -1,5 +1,5 @@
 <div class="center">
-<h3>優勝者</h3>
+<div class="title">WINNER</div>
 <% if @n == 0 %>
 	<% if @winners == nil %>
 	<p><span>誰も釣らなかったので引き分けです</span></p>
@@ -28,7 +28,7 @@
 
 
 
-<h3>参加ユーザー</h3>
+<div class="title">ENTRY USRES</div>
 
 <% @group_users.each do |g| %>
 <%= image_tag g.image.to_s, class: "user_icon" %>

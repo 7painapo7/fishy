@@ -33,6 +33,7 @@ a {
 }
 
 li {
+  font-family:"M PLUS Rounded 1c", Lato, 'Open Sans', Roboto, Verdana,Meiryo,sans-serif;
 　list-style: none;
 }
 
@@ -42,11 +43,12 @@ body {
 }
 
 span {
+  font-family:"M PLUS Rounded 1c", Lato, 'Open Sans', Roboto, Verdana,Meiryo,sans-serif;
   color: #EEE;
 }
 
 p {
-  font-family: "Helvetica Neue","Hiragino Kaku Gothic ProN",YuGothic,"Yu Gothic",Verdana,Meiryo,sans-serif;
+  font-family:"M PLUS Rounded 1c", Lato, 'Open Sans', Roboto, Verdana,Meiryo,sans-serif;
   margin: 0;
 }
 
@@ -569,7 +571,7 @@ cursor: pointer;
 }
 
 .countdown {
-  color: #04E9C9;
+  color: #EEE;
 }
 
 .fishy {
@@ -611,6 +613,24 @@ body {
 .group_users {
   margin: 15px;
 }
+
+.title {
+  color: #04E9C9;
+  font-family: Economica,sans-serif;
+  margin: 0 auto;
+  font-size: 32px;
+}
+
+.sub_title {
+  font-size: 24px;
+  font-family: Economica,sans-serif;
+}
+
+
+
+
+
+
 
 
 

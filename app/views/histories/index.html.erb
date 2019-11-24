@@ -1,5 +1,4 @@
-<h3>過去のあなたの釣果</h3>
-
+<div class="title">HISTORIES</div>
 <% @photos.each do |p| %>
 <div class="col-lg-3">
 	<%= link_to history_path(p.id) do %>
@@ -12,20 +11,20 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th>魚種</th>
-						<td><%= p.fish_name %></td>
+						<th><p><span>魚種</span></p></th>
+						<td><p><span><%= p.fish_name %></span></p></td>
 					</tr>
 					<tr>
-						<th>数</th>
-						<td><%= p.count %>匹</td>
+						<th><p><span>数</p></th>
+						<td><p><span><%= p.count %>匹</span></p></td>
 					</tr>
 					<tr>
-						<th>大きさ</th>
-						<td><%= p.size %>センチ</td>
+						<th><p><span>大きさ</p></th>
+						<td><p><span><%= p.size %>センチ</span></p></td>
 					</tr>
 					<tr>
-						<th>日時</th>
-						<td><%= p.created_at %></td>
+						<th><p><span>日時</p></th>
+						<td><p><span><%= p.created_at %></span></p></td>
 					</tr>
 					<tr>
 				</tbody>

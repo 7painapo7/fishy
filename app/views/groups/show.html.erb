@@ -1,7 +1,7 @@
 <div class="center">
-<h3>大会名</h3>
+<div class="title">CUP NAME</div>
 <p><span><%= @group.group_name %></span></p>
-<h3>参加ユーザー</h3>
+<h3>ENTRY USERS</h3>
 	<div class="row">
 	<% @group_users.each do |g| %>
 	<%= image_tag g.image.to_s, class: "user_icon group_users" %>
