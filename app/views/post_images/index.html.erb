@@ -118,9 +118,19 @@
     <%= link_to post_image_path(photo.id) do %>
     <%= image_tag photo.fish_image.to_s, class: "fish_image" %><br>
     <% end %>
-    <p><span>魚種 : <%= photo.fish_name %></span></p><br>
     <p><span>投稿者 : <%= User.find(photo.user_id).name %></span></p><br>
-    <%= link_to "削除", physical_deleted_path(photo.id), class:"btn-sm btn-danger", method: :post, data: { confirm: '本当に消しますか？' } %>
+    
+    <p><span>魚種 : <%= photo.fish_name %></span></p><br>
+    <p><span>魚種 : <%= photo.size %>センチ</span></p><br>
+
+        <div>
+        <% if User.find(photo.user_id).id == current_user.id %>
+        <%= link_to "削除", physical_deleted_path(photo.id), class:"btn-sm btn-danger", method: :post, data: { confirm: '本当に消しますか？' } %>
+        <% else %>
+        <p></p>
+        <% end %>
+        </div>
+
     </div>
     <% end %>
   </div>
