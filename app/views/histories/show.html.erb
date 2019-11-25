@@ -1,3 +1,15 @@
+<div class="space_50">
+</div>
+
+<div class="col-lg-3">
 <%= render 'post_images/image', post_image: @post_image %>
-<%= link_to "削除", history_path(@post_image.id), class:"btn-sm btn-danger", method: :delete, data: { confirm: '本当に消しますか？' } %>
-<%= render 'post_images/map', post_image: @post_image %>
+</div>
+
+<div class="col-lg-9">
+	<div class="maps_show">
+		<%= render 'post_images/map', post_image: @post_image %>
+	</div>
+</div>
+
+<div class="space_72">
+</div>

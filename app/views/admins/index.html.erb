@@ -9,15 +9,39 @@
   <% end %>
   </div>
 
+<div class="row user_row head_row">
+		<div class="col-lg-2 col-lg-offset-1">
+			<h5><span></span></h5>
+		</div>
+		<div class="col-lg-2">
+			<h5><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span>user</span></h5>
+		</div>
+		<div class="col-lg-4">
+			<h5><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <span>introduction</span></h5>
+		</div>
+		<div class="col-lg-3">
+			<h5><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span><span></span></h5>
+		</div>
+</div>
+
 
 
 <% @users.each do |user| %>
-	<div class="row">
-		<div class="col-xs-2">
-		<%= image_tag user.image.to_s, class: "user_icon" %>
+	<div class="row user_row">
+		<div class="col-lg-2 col-lg-offset-1">
+			<%= image_tag user.image.to_s, class: "user_icon" %>
 		</div>
-	<p><%= user.name %></p>
-	<p><%= user.introduction %></p>
-	<p><%= link_to "詳細", admin_path(user.id) %></p>
+		<div class="col-lg-2">
+			<p><span><%= user.name %></span></p>
+		</div>
+		<div class="col-lg-4">
+			<p><span><%= user.introduction %></span></p>
+		</div>
+		<div class="col-lg-3">
+		<p><%= link_to "詳細", admin_path(user.id) %></p>
+	    </div>
 	</div>
 <% end %>
+
+<div class="space_72">
+</div>

@@ -5,11 +5,10 @@
   <title>Fishy</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c|Economica|Bowlby+One|Lato|Open+Sans|Roboto&display=swap" rel="stylesheet">
 </head>
 
 
@@ -49,13 +48,30 @@
       <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
     </li>
 
-     <li class="">
-      <%= link_to "過去の釣果一覧", histories_path%>
+    <li class="">
+      <%= link_to "ユーザ一覧", users_path %>
     </li>
 
-    <li class="">
-      <!-- あとで変える -->
-      <%= link_to "ユーザ一覧", users_path %>
+    <% if  current_user.group_id == nil%>
+
+      <li class="">
+        <%= link_to "大会を始める" , user_path(current_user.id) %>
+      </li>
+
+      <% else %>
+
+      <li class="">
+        <%= link_to "大会へ戻る", post_images_path %>
+      </li>
+
+      <li class="">
+        <%= link_to "グループから退出する",taisyutsu_path(current_user.group_id), method: :post, data: { confirm: '大会から退出します。よろしいですか？' } %>
+      </li>
+
+      <% end %>
+
+     <li class="">
+      <%= link_to "過去の釣果一覧", histories_path%>
     </li>
 
     <li class="">
@@ -87,16 +103,16 @@
       </div>
     </nav>
   </div>
-  <div class="container">
+  <div class="container wrapper">
     <div class="center">
     <!-- 消すな -->
     <p></p>
     <!-- 消すな -->
-    <p>
+    <p><span>
     <% if flash[:notice] %>
     <%= flash[:notice] %>
     <% end %>
-    </p>
+    </span></p>
     <%= yield %>
     </div>
 
@@ -104,11 +120,11 @@
   </div>
 
 
-  <footer class="footer style-2">
-    <div class="center">
-      <p class="copyright">201909</p>
+<!--   <footer class="footer style-2">
+    <div class="footer_text">
+      <p class="copyright"><span></span></p>
     </div>
-  </footer>
+  </footer> -->
 
 </body>
 </html>

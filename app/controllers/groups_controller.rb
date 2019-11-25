@@ -3,8 +3,6 @@ class GroupsController < ApplicationController
   def index
       # 論理削除のための変数
       @group_users = User.where(group_id: current_user.group_id)
-      @a = @group_users[1..-1]
-      
       @photos = PostImage.where(user_id: @group_users)
 
 

@@ -7,8 +7,9 @@
 
 <!-- buttonをクリックしたらcodeAddressを実行　-->
 <input type="button" value="Encode" onclick="codeAddress()">
-<div id='map'>
 </div>
+
+<div id='map'>
 </div>
 
 
@@ -23,8 +24,8 @@ let geocoder
 
 var marker = [];
 var center = {
-  lat: <%= @post_image.latitude %>, // 緯度
-  lng: <%= @post_image.longitude %> // 経度
+  lat: <%= post_image.latitude %>, // 緯度
+  lng: <%= post_image.longitude %> // 経度
   };
 
 function initMap(){

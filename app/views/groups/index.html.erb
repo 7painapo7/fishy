@@ -1,63 +1,55 @@
 <div class="center">
-<h3>優勝者</h3>
+<div class="title">WINNER</div>
 <% if @n == 0 %>
-	<% if @winner == nil %>
-	<p>誰も釣らなかったので引き分けです</p>
+	<% if @winners == nil %>
+	<p><span>誰も釣らなかったので引き分けです</span></p>
 	<% else %>
 		<% @winners.each do |w| %>
 		<%= image_tag w.user.image.to_s, class: "user_icon" %>
-		<p><%= w.user.name %></p>
+		<p><span><%= w.user.name %></span></p>
 		<% end %>
 	<% end %>
 <% else%>
 
 	<% if @fff == [] %>
-	<p>誰も釣らなかったので引き分けです</p>
+	<p><span>誰も釣らなかったので引き分けです</span></p>
 	<% else %>
 		<% @fff.each do |w| %>
 		<%= image_tag User.find(w).image.to_s, class: "user_icon" %>
-		<p><%= User.find(w).name %></p>
+		<p><span><%= User.find(w).name %></span></p>
 		<% end %>
 	<% end %>
 <% end %>
 
-<h3>罰ゲームは</h3>
-<p><%= @regulation.punishment %>です</p>
+<p><span>罰ゲームは<%= @regulation.punishment %>です</span></p>
 
 
 
 
-<h3>参加ユーザー</h3>
-<div id="sampleCarousel" class="carousel slide" data-ride="carousel">
-	<div class="carousel-inner" role="listbox">
 
-		<div class="item active">
-		<%= image_tag @group_users.first.image.to_s, class: "user_icon" %>
-		</div>
-		<!-- 2番目以降を取り出したい -->
-		<% @a.each do |g| %>
-		<div class="item">
-		<%= image_tag g.image.to_s, class: "user_icon" %>
-		</div>
-		<% end %>
 
-	</div>
-	<a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
-		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-		<span class="sr-only">前へ</span>
-	</a>
-	<a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
-		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-		<span class="sr-only">次へ</span>
-	</a>
+<div class="title">ENTRY USRES</div>
+
+<% @group_users.each do |g| %>
+<%= image_tag g.image.to_s, class: "user_icon" %>
+<% end %>
+
+<div class="space_50">
+	
 </div>
-
 
 
 </div>
 </div>
+
+
+
 
 <%= link_to "大会を終了する", post_image_path(@photos), method: :delete, class: "btn btn-info col-xs-12", data: { confirm: 'グループのデータは削除されます。よろしいですか？' } %>
+
+<div class="space_110">
+	
+</div>
 
 
 

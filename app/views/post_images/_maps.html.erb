@@ -1,10 +1,16 @@
 <%=ENV['Maps_JavaScript_API']%>
+
+
+<div class="map_container">
+<div class='map'>
 <!-- 地名入力用のinputを追加 -->
 <input id="address" type="textbox" value="DMM WEBCAMP 難波">
 
 <!-- buttonをクリックしたらcodeAddressを実行　-->
 <input type="button" value="Encode" onclick="codeAddress()">
+</div>
 <div id='map'>
+</div>
 </div>
 
 <script>
@@ -19,10 +25,10 @@ let geocoder
 var marker = [];
 
 var center = [
-<% @photos.each do |photos| %>
+<% @photos.each do |photo| %>
 {
-  lat: <%= photos.latitude %>, // 緯度
-  lng: <%= photos.longitude %> // 経度
+  lat: <%= photo.latitude %>, // 緯度
+  lng: <%= photo.longitude %> // 経度
   },
 <% end %>
 ];
