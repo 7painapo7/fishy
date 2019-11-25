@@ -26,6 +26,7 @@ class PostImagesController < ApplicationController
         @group_users = User.where(group_id: current_user.group_id)
         # 同じgroup_idを持つものだけ表示
         @photos = PostImage.where(user_id: @group_users)
+        
         end
 	end
 

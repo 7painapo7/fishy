@@ -8,6 +8,8 @@
 <p><%= link_to "プロフィール編集", edit_user_path(@user),class: "btn btn-default"%></p><br>
 
 	<% if @user.group_id == nil %>
+		<div class="title">START</div>
+
 		<%= form_for @group, url: groups_path, method: :post do |g| %><br>
 		<div class= "field form-group col-lg-4 col-lg-offset-4">
 		<%= g.text_field :group_name, placeholder: 'グループ名 *',class: "form-control" %><br>
