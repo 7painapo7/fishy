@@ -76,3 +76,8 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'annotate'
 gem "paranoia", "~> 2.2"
+
+
+group :production do
+  gem 'mysql2'
+end
