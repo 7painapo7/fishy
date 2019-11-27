@@ -1,13 +1,25 @@
-<%= form_for(@user) do |f| %>
-image
-<%= f.label :image %>
-<%= f.file_field :image %>
+<div class="center">
+<div class="title">USER EDIT</div>
+<%= form_for(@user) do |f| %><br>
+<div class="field form-group col-lg-4 col-lg-offset-4">
+<%= f.label :image %><br>
+<span><%= f.file_field :image %></span><br>
+<%= f.label :name %><br>
+<%= f.text_field :name, autofocus: true, placeholder:"名前", class: "form-control" %><br>
+</div>
 
-name
-<%= f.text_field :name, autofocus: true, placeholder:"名前"%>
-introduction
-<%= f.text_field :introduction, autofocus: true %>
-<%= f.submit "Update User" %>
+<div class="field form-group col-lg-4 col-lg-offset-4">
+<%= f.label :introduction %><br>
+<%= f.text_field :introduction, autofocus: true, placeholder: '自己紹介', class: "form-control"%><br>
+</div>
+
+
+<%= f.submit "更新", class: "btn btn-info col-lg-4 col-lg-offset-4 col-xs-12" %><br>
 <% end %>
 
-<%= link_to "Destroy", user_path(@user.id), method: :delete,data: { confirm: '本当に消しますか？' } %>
+
+
+<div class="field form-group col-lg-4 col-lg-offset-4">
+<%= link_to "削除", user_path(@user.id), method: :delete,data: { confirm: '本当に消しますか？' } %>
+</div>
+</div>

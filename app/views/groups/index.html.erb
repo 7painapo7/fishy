@@ -1,0 +1,59 @@
+<div class="center">
+<div class="title">WINNER</div>
+<% if @n == 0 %>
+	<% if @winners == nil %>
+	<p><span>誰も釣らなかったので引き分けです</span></p>
+	<% else %>
+		<% @winners.each do |w| %>
+		<%= image_tag w.user.image.to_s, class: "user_icon" %>
+		<p><span><%= w.user.name %></span></p>
+		<% end %>
+	<% end %>
+<% else%>
+
+	<% if @fff == [] %>
+	<p><span>誰も釣らなかったので引き分けです</span></p>
+	<% else %>
+		<% @fff.each do |w| %>
+		<%= image_tag User.find(w).image.to_s, class: "user_icon" %>
+		<p><span><%= User.find(w).name %></span></p>
+		<% end %>
+	<% end %>
+<% end %>
+
+<p><span>罰ゲームは<%= @regulation.punishment %>です</span></p>
+
+
+
+
+
+
+<div class="title">ENTRY USRES</div>
+
+<% @group_users.each do |g| %>
+<%= image_tag g.image.to_s, class: "user_icon" %>
+<% end %>
+
+<div class="space_50">
+	
+</div>
+
+
+</div>
+</div>
+
+
+
+
+<%= link_to "大会を終了する", post_image_path(@photos), method: :delete, class: "btn btn-info col-xs-12", data: { confirm: 'グループのデータは削除されます。よろしいですか？' } %>
+
+<div class="space_110">
+	
+</div>
+
+
+
+<!-- <%= image_tag @group_users.first.image.to_s, class: "user_icon" %> -->
+
+
+

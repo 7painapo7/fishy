@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
 
 # ログイン後に遷移するpathを設定
   def after_sign_in_path_for(resource_or_scope)
-	stored_location_for(resource_or_scope) || users_path
+	stored_location_for(resource_or_scope) || user_path(resource)
   end
 # ログアウト後に遷移するpathを設定
   def after_sign_out_path_for(resource)
-    new_user_session_path
+    root_path
   end
 
 # sign_up時のnameの使用を許可

@@ -1,2 +1,48 @@
-<h1>Histories#index</h1>
-<p>Find me in app/views/histories/index.html.erb</p>
+<div class="title">HISTORIES</div>
+<% @photos.each do |p| %>
+<div class="col-lg-3">
+	<%= link_to history_path(p.id) do %>
+	<%= image_tag p.fish_image.to_s, class: "fish_image img_wrap" %>
+	<% end %><br>
+
+		<div class="table-responsive col-lg-10 col-lg-offset-1">
+			<table class="table">
+				<thead>
+				</thead>
+				<tbody>
+					<tr>
+						<th><p><span>魚種</span></p></th>
+						<td><p><span><%= p.fish_name %></span></p></td>
+					</tr>
+					<tr>
+						<th><p><span>数</p></th>
+						<td><p><span><%= p.count %>匹</span></p></td>
+					</tr>
+					<tr>
+						<th><p><span>大きさ</p></th>
+						<td><p><span><%= p.size %>センチ</span></p></td>
+					</tr>
+					<tr>
+						<th><p><span>日時</p></th>
+						<td><p><span><%= p.created_at %></span></p></td>
+					</tr>
+					<tr>
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+
+</div>
+<% end %>
+
+
+
+
+
+<div class="space_110">
+	
+</div>
+

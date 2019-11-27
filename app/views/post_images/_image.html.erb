@@ -1,0 +1,32 @@
+<div class="title">DATA</div>
+<div class="">
+<%= image_tag post_image.fish_image.to_s, class: "fish_thumbnail" %><br>
+</div>
+
+<div class="">
+<div class="table-responsive col-lg-10 col-lg-offset-1">
+	<table class="table">
+		<thead>
+		</thead>
+		<tbody>
+			<tr>
+				<th>魚種</th>
+				<td><%= post_image.fish_name %></td>
+			</tr>
+			<tr>
+				<th>数</th>
+				<td><%= post_image.count %>匹</td>
+			</tr>
+			<tr>
+				<th>大きさ</th>
+				<td><%= post_image.size %>センチ</td>
+			</tr>
+			<tr>
+				<th>日時</th>
+				<td><%= post_image.created_at %></td>
+			</tr>
+			<tr>
+		</tbody>
+	</table>
+</div>
+</div>

@@ -1,113 +1,146 @@
-<div class="container">
-<% if flash[:notice] %>
-<%= flash[:notice] %>
-<% end %>
-</div>
+  <div class="center">
+  <div class="title">CUP</div>
+  <h3><span><%= @group.group_name %></span></h3>
+  </div>
 
-<%= form_for(@p) do |f| %>
-image
-<%= f.label :fish_image %>
-<%= f.file_field :fish_image %>
+  <div class="center">
+  <div class="title">NOW</div>
+      <h3 id="time"></h3>
+      <script>
+      time();
+      function time(){
+          var now = new Date();
+          document.getElementById("time").innerHTML = now.toLocaleTimeString();
+      }
+      setInterval('time()',1000);
+      </script>
 
-魚種
-<%= f.text_field :fish_name, autofocus: true, placeholder:"魚種"%>
-数
-<%= f.text_field :count, autofocus: true %>
-大きさ
-<%= f.text_field :size, autofocus: true %>
-<%= f.submit "投稿する" %>
-<% end %>
+  <div class="title">END TIME</div>
+  <h3><span class="countdown" data-date="<%= @time.end_time %>"></span></h3>
+    <script>
+    window.addEventListener('load',()=>{
+      Countdown();
+    })
 
-<% @photos.each do |photos| %>
-<%= image_tag photos.fish_image.to_s %>
-<!-- <%= photos.fish_image %> -->
-<%= photos.fish_name %>
-<%= link_to "Show", post_image_path(photos.id) %>
-<%= link_to "Destroy", post_image_path(photos.id),class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか？' } %>
-<% end %>
+    const Countdown = function(){
+      const cd_areas = document.getElementsByClassName('countdown');
+      [...cd_areas].forEach(cd_area=>{
+        const target_unix = new Date(cd_area.dataset.date)/1000;
+        setInterval(()=>{
+          const now_unix = Math.floor(new Date()/1000);
+          let sec = target_unix-now_unix;
+          let cd_text = '';
+          if (sec == 0) {
+            alert('終了です!大会を終了します！');
+            window.location.href = '/groups'
+            return false;
+          }
+          if(sec>=86400){
+            cd_text += Math.floor(sec/86400)+'日';
+            sec = sec%86400;
+          }
+          if(sec>=3600){
+            cd_text += td(Math.floor(sec/3600))+'時間';
+            sec = sec%3600;
+          }else{
+            cd_text += '00時間';
+          }
+          if(sec>=60){
+            cd_text += td(Math.floor(sec/60))+'分';
+            sec = sec%60;
+          }else{
+            cd_text += '00分';
+          }
 
-
-
-<h2>gmap</h2>
-<%=ENV['Maps_JavaScript_API']%>
-
-<!-- 地名入力用のinputを追加 -->
-<input id="address" type="textbox" value="DMM WEBCAMP 難波">
-
-<!-- buttonをクリックしたらcodeAddressを実行　-->
-<input type="button" value="Encode" onclick="codeAddress()">
-<div id='map'>
-</div>
-
-<style>
-#map{
-  height: 600px;
-}
-</style>
-
-
-<script>
-/*
-mapを関数の外で定義(codeAddressでも使うため)
-geocoderを用意
-*/
-
-let map
-let geocoder
-
-var marker = [];
-
-var center = [
-<% @photos.each do |photos| %>
-{
-  lat: <%= photos.latitude %>, // 緯度
-  lng: <%= photos.longitude %> // 経度
-  },
-<% end %>
-];
-
-function initMap(){
-  // geocoderを初期化
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-  center: center[0], // 地図の中心を指定
-  zoom: 14
-  });
-
-
-// マーカー毎の処理
-for (var i = 0; i < center.length; i++) {
-  markerLatLng = new google.maps.LatLng({lat: center[i]['lat'], lng: center[i]['lng']}); // 緯度経度のデータ作成
-  marker[i] = new google.maps.Marker({ // マーカーの追加
-      position: markerLatLng, // マーカーを立てる位置を指定
-      map: map // マーカーを立てる地図を指定
-   });
-}
-}
-
-
-
-function codeAddress(){
-  // 入力を取得
-  let inputAddress = document.getElementById('address').value;
-
-  // geocodingしたあとmapを移動
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-　　　　　　　　　　　　// map.setCenterで地図が移動
-      map.setCenter(results[0].geometry.location);
-
-　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
+          cd_text += td(sec)+'秒';
+          cd_area.textContent = cd_text;
+        },1000);
       });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
-</script>
 
-<script src= <%= ENV['Maps_JavaScript_URL']%> async defer></script>
+      function td(x){
+        if(x<10){
+          return '0'+x;
+        }else{
+          return x;
+        }
+      }
+    }
+    </script>
+  </div>
+
+
+<div class="image_modal">
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#sampleModal">
+    画像を投稿する
+  </button>
+
+  <!-- モーダル・ダイアログ -->
+  <div class="modal fade" id="sampleModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+          <h4 class="modal-title">画像投稿</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_for(@p) do |f| %>
+          <%= f.label :fish_image %>
+          <%= f.file_field :fish_image %>
+          <p>魚種<br><%= f.text_field :fish_name, autofocus: true, placeholder:"魚種"%></p>
+          <p>数<br><%= f.text_field :count, autofocus: true, placeholder:"匹数" ,value: 1 %></p>
+          <p>大きさ<br><%= f.text_field :size, autofocus: true, placeholder:"センチ" %>
+          </p><br>
+
+          <div class="modal-footer">
+            <%= f.submit "投稿する", class: "col-xs-12 btn btn-info" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'post_images/maps', photos: @photos %>
+
+<div class="center">
+  <div class="title">ENTRY USERS</div>
+  <div class="row">
+    <% @group_users.each do |g| %>
+    <%= image_tag g.image.to_s, class: "user_icon group_users" %>
+    <!-- <p><%= g.name %></p> -->
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="title">POST IMAGES</div>
+    <% @photos.each do |photo| %>
+    <div class="col-xs-12 col-lg-3">
+    <%= link_to post_image_path(photo.id) do %>
+    <%= image_tag photo.fish_image.to_s, class: "fish_image" %><br>
+    <% end %>
+    <p><span>投稿者 : <%= User.find(photo.user_id).name %></span></p><br>
+    
+    <p><span>魚種 : <%= photo.fish_name %></span></p><br>
+    <p><span>魚種 : <%= photo.size %>センチ</span></p><br>
+
+        <div>
+        <% if User.find(photo.user_id).id == current_user.id %>
+        <%= link_to "削除", physical_deleted_path(photo.id), class:"btn-sm btn-danger", method: :post, data: { confirm: '本当に消しますか？' } %>
+        <% else %>
+        <p></p>
+        <% end %>
+        </div>
+
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="space_110">
+</div>
+
+<%= link_to "表彰ページへ", groups_path, class: "btn btn-info col-xs-12", data: { confirm: 'ページを離れます' } %>
+
+<div class="space_110">
+
+</div>

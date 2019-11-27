@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  validates :name , presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -9,4 +9,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImagesUploader
 
   has_many :post_images, dependent: :destroy
+  has_many :histories, dependent: :destroy
+  # optional: trueでsign upできるようになる
+  belongs_to :group, optional: true
 end

@@ -1,58 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>Pf</title>
+  <meta charset="utf8">
+  <title>Fishy</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c|Economica|Bowlby+One|Lato|Open+Sans|Roboto&display=swap" rel="stylesheet">
 </head>
 
 
 
+
 <body>
-  <header>
-    <div class="container">
-      <div id="slidemenu">
+  <div class="header" id="header">
+    <nav class="navbar navbar-main navbar-shadow" role="navigation" id="slide-nav">
+      <div class="container relative">
+        <div class="navbar-header">
+          <a class="navbar-logo" href="/">
+            <%= image_tag('logo.png') %>
+          </a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if admin_signed_in? %>
 
-          <li class="">
-            <!-- あとで変える -->
-            <%= link_to "ユーザ一覧", users_path %>
-          </li>
+<div id="sp-menu">
+    <h2></h2>
+<% if admin_signed_in? %>
+    <li class="">
+      <%= link_to "新規登録", users_path %>
+    </li>
 
-          <li class="">
-            <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
-          </li>
+    <li class="">
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+    </li>
 
-          <% elsif user_signed_in? %>
+    <% elsif user_signed_in? %>
 
-          <li class="">
-            <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
-          </li>
+    <li class="">
+      <%= link_to "#{current_user.name} 様", user_path(current_user.id) %>
+    </li>
 
-          <li class="">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-          </li>
+    <li class="">
+      <%= link_to "ユーザ一覧", users_path %>
+    </li>
 
-          <% else %>
+    <% if  current_user.group_id == nil%>
 
-          <li class="">
-            <%= link_to "New user",  new_user_registration_path %>
-          </li>
+      <li class="">
+        <%= link_to "大会を始める" , user_path(current_user.id) %>
+      </li>
 
-          <li class="">
-            <%= link_to "Log in", new_user_session_path %>
-          </li>
-          <% end %>
-        </ul>
+      <% else %>
+
+      <li class="">
+        <%= link_to "大会へ戻る", post_images_path %>
+      </li>
+
+      <li class="">
+        <%= link_to "グループから退出する",taisyutsu_path(current_user.group_id), method: :post, data: { confirm: '大会から退出します。よろしいですか？' } %>
+      </li>
+
+      <% end %>
+
+     <li class="">
+      <%= link_to "過去の釣果一覧", histories_path%>
+    </li>
+
+    <li class="">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </li>
+
+    <% else %>
+
+    <li class="">
+      <%= link_to "新規登録",  new_user_registration_path %>
+    </li>
+
+    <li class="">
+      <%= link_to "ログイン", new_user_session_path %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+  <div id="hm-icon">
+    <a class="menu-trigger" href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+  </div>
+
+
       </div>
+    </nav>
+  </div>
+  <div class="container wrapper">
+    <div class="center">
+    <!-- 消すな -->
+    <p></p>
+    <!-- 消すな -->
+    <p><span>
+    <% if flash[:notice] %>
+    <%= flash[:notice] %>
+    <% end %>
+    </span></p>
+    <%= yield %>
     </div>
-  </header>
-  <!-- /header -->
-  <%= yield %>
+
+
+  </div>
+
+
+<!--   <footer class="footer style-2">
+    <div class="footer_text">
+      <p class="copyright"><span></span></p>
+    </div>
+  </footer> -->
+
 </body>
 </html>

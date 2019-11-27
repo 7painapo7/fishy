@@ -1,0 +1,56 @@
+<div class="center">
+<div class="title">CUP NAME</div>
+<p><span><%= @group.group_name %></span></p>
+<div class="title">ENTRY USERS</div>
+	<div class="row">
+	<% @group_users.each do |g| %>
+	<%= image_tag g.image.to_s, class: "user_icon group_users" %>
+	<!-- <p><%= g.name %></p> -->
+	<% end %>
+	</div>
+</div>
+
+
+
+
+<div class="row rule_modal">
+  <button type="button" class="btn btn-info col-lg-4 col-lg-offset-4 col-xs-12" data-toggle="modal" data-target="#sampleModal">
+    ルールを決定
+  </button>
+
+  <!-- モーダル・ダイアログ -->
+	  <div class="modal fade" id="sampleModal" tabindex="-1">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+	          <h4 class="modal-title">ルール設定</h4>
+	        </div>
+	        <div class="modal-body">
+				<%= form_for @regulation, url: regulations_path, method: :post do |f| %>
+				<p>勝敗</p><br>
+				<p><%= f.select :genre, [['大きさ勝負','size'],['数勝負','count']] %></p><br>
+				<p>罰ゲーム</p><br>
+				<p><%= f.text_field :punishment, :placeholder => "内容"%></p><br>
+				<!-- カレンダー -->
+				<p class="control-label" for="">終了予定日時</p><br>
+				<p><%= f.datetime_select :end_time, {} %></p><br>
+				<div class="modal-footer">
+				<%= f.submit '大会を始める', class: "col-xs-12 btn btn-info" %><br>
+				<% end %>
+				</div>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+<div class="row center">
+<p class="link"><%= link_to 'グループを削除',sakujyo_path(current_user.group_id), method: :post %></p>
+<p class="link"><%= link_to 'グループを退出',taisyutsu_path(current_user.group_id), method: :post %></p>
+</div>
+
+
+<div class="space_72">
+
+</div>
