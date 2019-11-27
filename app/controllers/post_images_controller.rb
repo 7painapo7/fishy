@@ -27,6 +27,13 @@ class PostImagesController < ApplicationController
         # 同じgroup_idを持つものだけ表示
         @photos = PostImage.where(user_id: @group_users)
         
+        
+        endTime = @time.end_time
+        nowTime = DateTime.now
+
+
+        @count = (endTime - nowTime).to_i
+
         end
 	end
 
