@@ -31,7 +31,7 @@ class PostImagesController < ApplicationController
         endTime = @time.end_time
         nowTime = DateTime.now
 
-
+        # 綺麗な形でjsに渡す
         @count = (endTime - nowTime).to_i
 
         end
