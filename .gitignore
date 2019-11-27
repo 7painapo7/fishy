@@ -32,3 +32,4 @@
 
 # 環境変数
 /.env
+/config/database.yml
