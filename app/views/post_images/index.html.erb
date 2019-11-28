@@ -16,8 +16,12 @@
       </script>
 
   <div class="title">END TIME</div>
-  <h3><span class="countdown" data-date="<%= @time.end_time %>"></span></h3>
-    <script>
+  <h3><span class="countdown" data-date="<%= @count %>"></span></h3>
+
+<INPUT type="hidden" value="<%= @count %>" id="count">
+
+<!-- スマホ環境だと動かんかった奴 -->
+<!--     <script>
     window.addEventListener('load',()=>{
       Countdown();
     })
@@ -66,7 +70,85 @@
       }
     }
     </script>
-  </div>
+ -->
+
+
+
+<script>
+
+
+
+// カウントダウンする秒数(sec2 = @count)
+var sec2 = document.getElementById('count').value;
+
+const cd_areas = document.getElementsByClassName('countdown');
+[...cd_areas].forEach(cd_area=>{
+
+
+// const target_unix = new Date(cd_area.dataset.date)/1000;
+// alert(new Date(cd_area.dataset.date)/1000);
+// const now_unix = Math.floor(new Date()/1000);
+
+// // 開始日時を設定
+// var dt = new Date();
+// // console.log("Start: ", dt);
+
+// // 終了時刻を開始日時+カウントダウンする秒数に設定
+// var endDt = new Date(dt.getTime() + sec * 1000);
+// console.log("End : ", endDt);
+
+  // 1秒おきにカウントダウン
+  var id = setInterval(function(){
+  sec2--;
+  sec = sec2;
+
+  let cd_text = '';
+        if (sec == 0) {
+          alert('時間です!大会を終了します！');
+          window.location.href = '/groups'
+          return false;
+        }
+        if(sec>=86400){
+          cd_text += Math.floor(sec/86400)+'日';
+          sec = sec%86400;
+        }
+        if(sec>=3600){
+          cd_text += td(Math.floor(sec/3600))+'時間';
+          sec = sec%3600;
+        }else{
+          cd_text += '00時間';
+        }
+        if(sec>=60){
+          cd_text += td(Math.floor(sec/60))+'分';
+          sec = sec%60;
+        }else{
+          cd_text += '00分';
+        }
+
+        cd_text += td(sec)+'秒';
+        cd_area.textContent = cd_text;
+
+            function td(x){
+    if(x<10){
+      return '0'+x;
+    }else{
+      return x;
+    }
+  }
+
+
+  // 現在日時と終了日時を比較
+  dt = new Date();
+  if(dt.getTime() >= endDt.getTime()){
+    clearInterval(id);
+    console.log("Finish!");
+  }
+  }, 1000);
+});
+
+
+</script>
+</div>
 
 
 <div class="image_modal">

@@ -63,3 +63,4 @@ class ImagesUploader < CarrierWave::Uploader::Base
     end
 
 end
+

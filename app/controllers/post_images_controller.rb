@@ -27,6 +27,13 @@ class PostImagesController < ApplicationController
         # 同じgroup_idを持つものだけ表示
         @photos = PostImage.where(user_id: @group_users)
         
+
+        endTime = @time.end_time
+        nowTime = DateTime.now
+
+
+        @count = (endTime - nowTime).to_i
+
         end
 	end
 
@@ -61,3 +68,4 @@ class PostImagesController < ApplicationController
 			params.require(:post_image).permit(:count, :size, :fish_name, :fish_image)
 		end
 end
+
