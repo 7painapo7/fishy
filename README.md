@@ -1,24 +1,23 @@
-# README
+## 簡単な説明
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+友達と一緒に釣りに行くと自然と勝負になってしまいがち。 
+仲間と釣りの勝負(大会)ができ、釣れた場所を正確にリアルタイムで友達と共有できるるアプリです。
+大会が終了したら自分だけの釣果データを自動で作成できます。
+ 
+***デモ***
+ 
+https://www.fishy.monster/
+ 
+## 機能
+  
+- 画像から位置情報を取得して地図に表示
+- 自分だけの釣果データを自動で作成
+ 
+## 使い方
+ 
+1. ログインまたはサインアップ
+2. 大会参加ユーザーをグループに招待
+3. ルールを決める
+4. 釣れた魚の画像を投稿
+5. 投稿画像の位置情報から地図にマーカーを表示
+6. 大会を終了させると自動で釣果作成
